@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CounterApp</string>
+    <string name="counterApp">COUNTER APPLICATION</string>
+</resources>

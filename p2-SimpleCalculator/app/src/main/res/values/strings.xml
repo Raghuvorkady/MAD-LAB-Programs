@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">SimpleCalculator</string>
+
+    <!--  Button Names  -->
+    <string name="clearTxt">AC</string>
+    <string name="percentageSymbol">%</string>
+    <string name="backspace">\u232b</string>
+    <string name="divide">÷</string>
+    <string name="sevenNum">7</string>
+    <string name="eightNum">8</string>
+    <string name="nineNum">9</string>
+    <string name="multiplySymbol">×</string>
+    <string name="fourNum">4</string>
+    <string name="fiveNum">5</string>
+    <string name="sixNum">6</string>
+    <string name="minusSymbol">-</string>
+    <string name="oneNum">1</string>
+    <string name="twoNum">2</string>
+    <string name="threeNum">3</string>
+    <string name="plusSymbol">+</string>
+    <string name="multiplyBy100">00</string>
+    <string name="zeroNum">0</string>
+    <string name="dotSymbol">.</string>
+    <string name="equalsSymbol">=</string>
+    <string name="about">About</string>
+    <string name="feedback">Feedback</string>
+    <string name="exit">Exit</string>
+
+</resources>

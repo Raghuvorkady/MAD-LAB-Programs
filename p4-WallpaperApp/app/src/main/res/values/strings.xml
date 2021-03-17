@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WallpaperApp</string>
+    <string name="changeBtnText">Click here to change wallpaper</string>
+    <string name="changing_wallpaper_application">CHANGING WALLPAPER APPLICATION</string>
+</resources>
