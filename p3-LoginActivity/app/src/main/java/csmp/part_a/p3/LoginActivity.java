@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void getValueFromUserBundle() { //getting values from bundles
-        username = getIntent().getExtras().getString("usernameKey");
-        password = getIntent().getExtras().getString("passwordKey");
+        username = getIntent().getExtras().getString(MainActivity.USERNAME_KEY);
+        password = getIntent().getExtras().getString(MainActivity.PASSWORD_KEY);
     }
 
 

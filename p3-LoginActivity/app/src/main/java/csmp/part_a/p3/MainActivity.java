@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText signUpUsernameField, signUpPasswordField;
     TextView pwdRuleTextView;
 
+    static final String USERNAME_KEY = "userNameKey";
+    static final String PASSWORD_KEY = "passwordKey";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     makeToast("Password validation failed!");
                 } else {
                     Bundle userBundle = new Bundle();
-                    userBundle.putString("usernameKey", username);
-                    userBundle.putString("passwordKey", password);
+                    userBundle.putString(USERNAME_KEY, username);
+                    userBundle.putString(PASSWORD_KEY, password);
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     intent.putExtras(userBundle);
                     startActivity(intent);
