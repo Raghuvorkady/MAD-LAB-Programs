@@ -1,8 +1,5 @@
 package csmp.part_a.p3;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,15 +8,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button signUpButton;
     SwitchCompat pwdRuleSwitch;
     EditText signUpUsernameField, signUpPasswordField;
     TextView pwdRuleTextView;
-
-    static final String USERNAME_KEY = "userNameKey";
-    static final String PASSWORD_KEY = "passwordKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     makeToast("Password validation failed!");
                 } else {
                     Bundle userBundle = new Bundle();
-                    userBundle.putString(USERNAME_KEY, username);
-                    userBundle.putString(PASSWORD_KEY, password);
+                    userBundle.putString(Constants.USERNAME_KEY, username);
+                    userBundle.putString(Constants.PASSWORD_KEY, password);
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     intent.putExtras(userBundle);
                     startActivity(intent);
