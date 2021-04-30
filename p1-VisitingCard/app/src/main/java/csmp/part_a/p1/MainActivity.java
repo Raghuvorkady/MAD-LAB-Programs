@@ -1,87 +1,96 @@
 package csmp.part_a.p1;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
-    static final int REQUEST_IMAGE_GET = 1;
-    ImageView selectedLogo;
-    Button createButton, selectImageButton;
-    static VisitingCardClass visitingCardClass;
-    Uri fullPhotoUri;
-    EditText companyName, name, jobTitle, phone, address, email, website, fax;
+import csmp.part_a.p1.models.VisitingCard;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public static final String VISITING_CARD_KEY = "visitingCard";
+    private static final int REQUEST_CODE = 1;
+    private ImageView selectedLogo;
+    private Button createButton, selectImageButton;
+    private Uri fullPhotoUri;
+    private TextView selectedImageText;
+    private EditText companyName, name, jobTitle, phone, address, email, website, fax;
+    private VisitingCard visitingCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        selectedLogo = (ImageView) findViewById(R.id.imageView);
-        companyName = (EditText) findViewById(R.id.editText1);
-        name = (EditText) findViewById(R.id.editText2);
-        jobTitle = (EditText) findViewById(R.id.editText3);
-        phone = (EditText) findViewById(R.id.editText4);
-        address = (EditText) findViewById(R.id.editText5);
-        email = (EditText) findViewById(R.id.editText6);
-        website = (EditText) findViewById(R.id.editText7);
-        fax = (EditText) findViewById(R.id.editText8);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //for disabling the night/dark mode
 
-        createButton = (Button) findViewById(R.id.createButton);
-        selectImageButton = (Button) findViewById(R.id.selectImageButton);
+        selectedImageText = findViewById(R.id.selectedImageText);
+        selectedLogo = findViewById(R.id.imageView);
+        companyName = findViewById(R.id.editText1);
+        name = findViewById(R.id.editText2);
+        jobTitle = findViewById(R.id.editText3);
+        phone = findViewById(R.id.editText4);
+        address = findViewById(R.id.editText5);
+        email = findViewById(R.id.editText6);
+        website = findViewById(R.id.editText7);
+        fax = findViewById(R.id.editText8);
+        createButton = findViewById(R.id.createButton);
+        selectImageButton = findViewById(R.id.selectImageButton);
 
-        selectImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectImage();
-            }
-        });
-
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (companyName.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Enter the company name", Toast.LENGTH_SHORT).show();
-                } else {
-                    visitingCardClass = new VisitingCardClass(companyName.getText().toString(), name.getText().toString(), jobTitle.getText().toString(), phone.getText().toString
-                            (), address.getText().toString(), email.getText().toString(), website.getText().toString(), fax.getText().toString(), fullPhotoUri);
-
-                    Intent intent = new Intent(MainActivity.this, GeneratedCard.class);
-                    startActivity(intent);
-                }
-            }
-        });
+        selectImageButton.setOnClickListener(this);
+        createButton.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.selectImageButton:
+                selectImage();
+                break;
+            case R.id.createButton:
+                if (companyName.getText().toString().equals(""))
+                    makeToast("Enter the company name");
+                else {
+                    visitingCard = new VisitingCard(companyName, name, jobTitle, phone, address,
+                            email, website, fax, fullPhotoUri);
+
+                    Intent intent = new Intent(MainActivity.this, GeneratedCard.class);
+                    intent.putExtra(VISITING_CARD_KEY, visitingCard);
+                    startActivity(intent);
+                }
+                break;
+        }
+    }
+
+    private void makeToast(String toastMessage) {
+        Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
+    }
 
     public void selectImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, REQUEST_IMAGE_GET);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             fullPhotoUri = data.getData();
             selectedLogo.setImageURI(fullPhotoUri);
+            selectedImageText.setVisibility(View.VISIBLE);
         }
     }
 }

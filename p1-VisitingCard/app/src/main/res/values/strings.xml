@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">VisitingCard</string>
-    <string name="title_activity_generated_card">FullscreenActivity</string>
-    <string name="dummy_button">Back</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="job_title">Job Title</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="website">Website</string>
+    <string name="fax">FAX</string>
+    <string name="create_visiting_card">Create Visiting Card</string>
+    <string name="company_name">Company Name</string>
+    <string name="no_image_found">No image found</string>
+    <string name="card">visitingCard</string>
 </resources>

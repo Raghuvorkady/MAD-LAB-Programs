@@ -5,57 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#999999"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:ignore="MissingDefaultResource">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
         app:cardCornerRadius="4dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/companyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="40dp"
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="@string/company_name"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/no_image_found"
-                tools:srcCompat="@tools:sample/avatars" />
+                <TextView
+                    android:id="@+id/companyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text="@string/company_name"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/no_image_found"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
-                android:gravity="start"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/linearLayout1"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:paddingLeft="12dp">
+                android:paddingLeft="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp">
 
 
                 <TextView
@@ -66,7 +78,7 @@
                     android:drawablePadding="10dp"
                     android:gravity="center"
                     android:paddingLeft="10dp"
-                    android:text="name"
+                    android:text="@string/name"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -74,7 +86,7 @@
                     android:id="@+id/jobTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:drawableLeft="@drawable/ic_work"
                     android:drawablePadding="10dp"
                     android:gravity="center"
@@ -88,15 +100,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="4dp"
                     android:background="?android:attr/listDivider" />
 
                 <TextView
                     android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:drawableLeft="@drawable/ic_call"
                     android:drawablePadding="10dp"
                     android:gravity="center"
@@ -109,7 +121,7 @@
                     android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:drawableLeft="@drawable/ic_location"
                     android:drawablePadding="10dp"
                     android:gravity="center"
@@ -123,15 +135,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="4dp"
                     android:background="?android:attr/listDivider" />
 
                 <TextView
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:drawableLeft="@drawable/ic_email"
                     android:drawablePadding="10dp"
                     android:gravity="center"
@@ -144,7 +156,7 @@
                     android:id="@+id/website"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:drawableLeft="@drawable/ic_public"
                     android:drawablePadding="10dp"
                     android:gravity="center"
@@ -157,7 +169,7 @@
                     android:id="@+id/fax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:drawableLeft="@drawable/ic_print"
                     android:drawablePadding="10dp"
                     android:gravity="center"
@@ -167,7 +179,8 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
+
 
     </androidx.cardview.widget.CardView>
 
