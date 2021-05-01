@@ -1,4 +1,4 @@
-package csmp.part_a.p1;
+package csmp.part_a.p1.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import csmp.part_a.p1.R;
 import csmp.part_a.p1.models.VisitingCard;
 
 public class GeneratedCard extends AppCompatActivity implements View.OnClickListener {
