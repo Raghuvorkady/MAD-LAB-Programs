@@ -11,12 +11,12 @@
         android:id="@+id/textView0"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:gravity="center"
         android:layout_margin="4dp"
-        android:textSize="18sp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="20dp"
+        android:gravity="center"
         android:text="@string/enter_all_the_details_to_ncreate_your_visiting_card"
+        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
@@ -36,49 +36,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:ems="10"
                 android:autofillHints="@string/company_name"
+                android:ems="10"
                 android:hint="@string/company_name"
                 android:inputType="textPersonName" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/selectImageButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:text="@string/select_logo_image" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/selectedImageText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="@string/selected_image"
-                android:layout_weight="1"
-                android:visibility="invisible" />
+                <Button
+                    android:id="@+id/selectImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_logo_image"
+                    android:textAllCaps="false" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/select_logo_image"
-                tools:srcCompat="@tools:sample/avatars" />
+                <TextView
+                    android:id="@+id/selectedImageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/selected_image"
+                    android:visibility="invisible" />
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/select_logo_image"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/editText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:autofillHints="@string/name"
                 android:ems="10"
                 android:hint="@string/name"
-                android:autofillHints="@string/name"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -86,9 +87,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:autofillHints="@string/job_title"
                 android:ems="10"
                 android:hint="@string/job_title"
-                android:autofillHints="@string/job_title"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -96,9 +97,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:autofillHints="@string/phone_number"
                 android:ems="10"
                 android:hint="@string/phone_number"
-                android:autofillHints="@string/phone_number"
                 android:inputType="phone" />
 
             <EditText
@@ -106,9 +107,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
+                android:autofillHints="@string/address"
                 android:ems="10"
                 android:hint="@string/address"
-                android:autofillHints="@string/address"
                 android:inputType="textPostalAddress" />
 
             <EditText
@@ -116,9 +117,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
+                android:autofillHints="@string/email"
                 android:ems="10"
                 android:hint="@string/email"
-                android:autofillHints="@string/email"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -126,9 +127,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
+                android:autofillHints="@string/website"
                 android:ems="10"
                 android:hint="@string/website"
-                android:autofillHints="@string/website"
                 android:inputType="textWebEditText" />
 
             <EditText
@@ -136,21 +137,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
+                android:autofillHints="@string/fax"
                 android:ems="10"
                 android:hint="@string/fax"
-                android:autofillHints="@string/fax"
                 android:inputType="textPersonName" />
 
             <Button
                 android:id="@+id/createButton"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:textAllCaps="false"
                 android:layout_height="wrap_content"
-                android:text="@string/create_visiting_card" />
+                android:layout_marginTop="20dp"
+                android:text="@string/create_visiting_card"
+                android:textAllCaps="false" />
 
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
