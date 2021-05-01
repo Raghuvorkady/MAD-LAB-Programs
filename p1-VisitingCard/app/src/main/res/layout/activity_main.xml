@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:autofillHints="@string/address"
+                android:importantForAutofill="no"
                 android:ems="10"
                 android:hint="@string/address"
                 android:inputType="textPostalAddress" />
