@@ -3,6 +3,7 @@ package csmp.part_a.p1.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,12 +21,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String VISITING_CARD_KEY = "visitingCard";
     private static final int REQUEST_CODE = 1;
+    public static final int TIME_DELAY = 2000;
     private ImageView selectedLogo;
     private Button createButton, selectImageButton;
     private Uri fullPhotoUri;
     private TextView selectedImageText;
     private EditText companyName, name, jobTitle, phone, address, email, website, fax;
     private VisitingCard visitingCard;
+    private boolean isBackPressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,5 +96,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             selectedLogo.setImageURI(fullPhotoUri);
             selectedImageText.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isBackPressed) {
+            super.onBackPressed();
+            return;
+        }
+
+        isBackPressed = true;
+        makeToast("Please press BACK button again to exit");
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isBackPressed = false;
+            }
+        }, TIME_DELAY);
     }
 }
