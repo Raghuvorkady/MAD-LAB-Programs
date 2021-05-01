@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         app:cardCornerRadius="4dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
@@ -45,9 +45,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/no_image_found"
+                android:contentDescription="@string/company_logo_image"
                 tools:srcCompat="@tools:sample/avatars" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,40 +54,45 @@
                 android:layout_marginTop="30dp"
                 android:gravity="start"
                 android:orientation="vertical"
-                android:paddingLeft="12dp">
-
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                tools:ignore="RtlSymmetry">
 
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_account"
                     android:drawablePadding="10dp"
                     android:gravity="center"
+                    android:paddingStart="10dp"
                     android:paddingLeft="10dp"
-                    android:text="name"
+                    android:text="@string/name"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableLeftCompat="@drawable/ic_account" />
 
                 <TextView
                     android:id="@+id/jobTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:drawableLeft="@drawable/ic_work"
                     android:drawablePadding="10dp"
                     android:gravity="center"
+                    android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/job_title"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableLeftCompat="@drawable/ic_work" />
 
                 <View
                     android:id="@+id/divider1"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:background="?android:attr/listDivider" />
 
@@ -97,33 +101,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:drawableLeft="@drawable/ic_call"
                     android:drawablePadding="10dp"
                     android:gravity="center"
+                    android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/phone_number"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableLeftCompat="@drawable/ic_call" />
 
                 <TextView
                     android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:drawableLeft="@drawable/ic_location"
                     android:drawablePadding="10dp"
                     android:gravity="center"
+                    android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/address"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableLeftCompat="@drawable/ic_location" />
 
                 <View
                     android:id="@+id/divider2"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:background="?android:attr/listDivider" />
 
@@ -132,39 +140,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:drawableLeft="@drawable/ic_email"
                     android:drawablePadding="10dp"
                     android:gravity="center"
+                    android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/email"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableLeftCompat="@drawable/ic_email" />
 
                 <TextView
                     android:id="@+id/website"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:drawableLeft="@drawable/ic_public"
                     android:drawablePadding="10dp"
                     android:gravity="center"
+                    android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/website"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableLeftCompat="@drawable/ic_public" />
 
                 <TextView
                     android:id="@+id/fax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:drawableLeft="@drawable/ic_print"
                     android:drawablePadding="10dp"
                     android:gravity="center"
+                    android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:text="@string/fax"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableLeftCompat="@drawable/ic_print" />
+
             </LinearLayout>
 
         </LinearLayout>
