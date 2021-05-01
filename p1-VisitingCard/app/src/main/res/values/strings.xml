@@ -9,6 +9,9 @@
     <string name="fax">FAX</string>
     <string name="create_visiting_card">Create Visiting Card</string>
     <string name="company_name">Company Name</string>
-    <string name="no_image_found">No image found</string>
+    <string name="company_logo_image">Company logo image</string>
     <string name="card">visitingCard</string>
+    <string name="enter_all_the_details_to_ncreate_your_visiting_card">Enter all the details to\ncreate your visiting card</string>
+    <string name="select_logo_image">Select logo Image</string>
+    <string name="selected_image">Selected Image:</string>
 </resources>

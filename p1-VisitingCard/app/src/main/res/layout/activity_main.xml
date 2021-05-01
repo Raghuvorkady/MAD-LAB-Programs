@@ -16,7 +16,7 @@
         android:textSize="18sp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="20dp"
-        android:text="Enter all the details to\ncreate your visiting card"
+        android:text="@string/enter_all_the_details_to_ncreate_your_visiting_card"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
@@ -37,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="Enter Company name:"
+                android:autofillHints="@string/company_name"
+                android:hint="@string/company_name"
                 android:inputType="textPersonName" />
 
         <LinearLayout
@@ -49,14 +50,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAllCaps="false"
-                android:text="Select logo" />
+                android:text="@string/select_logo_image" />
 
             <TextView
                 android:id="@+id/selectedImageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="Selected Image: "
+                android:gravity="end"
+                android:text="@string/selected_image"
                 android:layout_weight="1"
                 android:visibility="invisible" />
 
@@ -65,6 +66,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/select_logo_image"
                 tools:srcCompat="@tools:sample/avatars" />
 
         </LinearLayout>
@@ -76,6 +78,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/name"
+                android:autofillHints="@string/name"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -85,6 +88,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/job_title"
+                android:autofillHints="@string/job_title"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -94,6 +98,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/phone_number"
+                android:autofillHints="@string/phone_number"
                 android:inputType="phone" />
 
             <EditText
@@ -103,6 +108,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/address"
+                android:autofillHints="@string/address"
                 android:inputType="textPostalAddress" />
 
             <EditText
@@ -111,8 +117,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-
                 android:hint="@string/email"
+                android:autofillHints="@string/email"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -122,6 +128,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/website"
+                android:autofillHints="@string/website"
                 android:inputType="textWebEditText" />
 
             <EditText
@@ -131,6 +138,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/fax"
+                android:autofillHints="@string/fax"
                 android:inputType="textPersonName" />
 
             <Button
