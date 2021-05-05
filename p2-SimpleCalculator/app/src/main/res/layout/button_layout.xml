@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:columnCount="4"
@@ -15,8 +16,9 @@
         android:layout_gravity=""
         android:background="@color/red"
         android:text="@string/clearTxt"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/backspace"
@@ -25,10 +27,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/backspace"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/divide"
@@ -37,10 +40,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/divide"
-        android:textColor="@android:color/white"
-        android:textSize="35sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="35sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/seven"
@@ -49,10 +53,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/sevenNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/eight"
@@ -61,21 +66,24 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/eightNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/nine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/nineNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/multiply"
@@ -84,10 +92,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/multiplySymbol"
-        android:textColor="@android:color/white"
-        android:textSize="35sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="35sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/four"
@@ -96,10 +105,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/fourNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/five"
@@ -108,10 +118,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/fiveNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/six"
@@ -120,10 +131,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/sixNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/minus"
@@ -132,10 +144,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/minusSymbol"
-        android:textColor="@android:color/white"
-        android:textSize="35sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="35sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/one"
@@ -144,10 +157,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/oneNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/two"
@@ -156,10 +170,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/twoNum"
-        android:textColor="@android:color/white"
-        android:textSize="26sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="26sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/three"
@@ -168,10 +183,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/threeNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/plus"
@@ -180,10 +196,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/plusSymbol"
-        android:textColor="@android:color/white"
-        android:textSize="35sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="35sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/dot"
@@ -192,10 +209,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/dotSymbol"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/zero"
@@ -204,10 +222,11 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/black"
+        android:background="?attr/bgColor"
         android:text="@string/zeroNum"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/equals"
@@ -218,9 +237,10 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="@color/orange"
+        android:focusable="true"
         android:text="@string/equalsSymbol"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/textColor"
         android:textSize="35sp"
-        android:focusable="true" />
+        tools:targetApi="lollipop" />
 
 </GridLayout>

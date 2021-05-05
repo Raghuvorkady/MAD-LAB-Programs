@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black"
+    android:background="?attr/bgColor"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/expression"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey"
+        android:background="?attr/bgColor"
         android:gravity="center_vertical|end"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@color/white"
+        android:textColor="?attr/metaTextColor"
         android:textSize="30sp"
         app:fontFamily="monospace" />
 
@@ -22,11 +22,11 @@
         android:id="@+id/outputView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey"
+        android:background="?attr/bgColor"
         android:gravity="center_vertical|end"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@color/white"
+        android:textColor="?attr/textColor"
         android:textSize="45sp"
         app:fontFamily="monospace" />
 

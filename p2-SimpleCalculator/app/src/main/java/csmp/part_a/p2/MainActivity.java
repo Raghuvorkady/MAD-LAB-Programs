@@ -1,10 +1,9 @@
 package csmp.part_a.p2;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -12,136 +11,158 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn;
-    Button equalsBtn, dotBtn, clearBtn, backspaceBtn, addBtn, subBtn, multiplyBtn, divideBtn;
+    private final String TAG = MainActivity.class.getSimpleName();
+    private final String PLUS = "+";
+    private final String MINUS = "-";
+    private final String MULTIPLY = "*";
+    private final String DIVIDE = "/";
+
     private TextView resultTextView;
     private TextView expressionTextView;
 
-    float lhs, rhs, answer;
-    String lhsString, rhsString, answerString;
+    private float lhs, rhs, answer;
+    private String lhsString, rhsString, answerString;
 
-    Vibrator vibrator;
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setAppTheme();
         setContentView(R.layout.activity_main);
 
         resultTextView = findViewById(R.id.outputView);
         expressionTextView = findViewById(R.id.expression);
 
-        zeroBtn = (Button) findViewById(R.id.zero);
-        oneBtn = findViewById(R.id.one);
-        twoBtn = findViewById(R.id.two);
-        threeBtn = findViewById(R.id.three);
-        fourBtn = findViewById(R.id.four);
-        fiveBtn = findViewById(R.id.five);
-        sixBtn = findViewById(R.id.six);
-        sevenBtn = findViewById(R.id.seven);
-        eightBtn = findViewById(R.id.eight);
-        nineBtn = findViewById(R.id.nine);
+        Button buttonZero = findViewById(R.id.zero);
+        Button buttonOne = findViewById(R.id.one);
+        Button buttonTwo = findViewById(R.id.two);
+        Button buttonThree = findViewById(R.id.three);
+        Button buttonFour = findViewById(R.id.four);
+        Button buttonFive = findViewById(R.id.five);
+        Button buttonSix = findViewById(R.id.six);
+        Button buttonSeven = findViewById(R.id.seven);
+        Button buttonEight = findViewById(R.id.eight);
+        Button buttonNine = findViewById(R.id.nine);
 
-        equalsBtn = findViewById(R.id.equals);
-        dotBtn = findViewById(R.id.dot);
-        clearBtn = findViewById(R.id.clear);
-        backspaceBtn = findViewById(R.id.backspace);
-        addBtn = findViewById(R.id.plus);
-        subBtn = findViewById(R.id.minus);
-        multiplyBtn = findViewById(R.id.multiply);
-        divideBtn = findViewById(R.id.divide);
+        Button equalsButton = findViewById(R.id.equals);
+        Button dotButton = findViewById(R.id.dot);
+        Button clearButton = findViewById(R.id.clear);
+        Button backspaceButton = findViewById(R.id.backspace);
+        Button addButton = findViewById(R.id.plus);
+        Button subtractButton = findViewById(R.id.minus);
+        Button multiplyButton = findViewById(R.id.multiply);
+        Button divideButton = findViewById(R.id.divide);
 
-        zeroBtn.setOnClickListener(this);
-        oneBtn.setOnClickListener(this);
-        twoBtn.setOnClickListener(this);
-        threeBtn.setOnClickListener(this);
-        fourBtn.setOnClickListener(this);
-        fiveBtn.setOnClickListener(this);
-        sixBtn.setOnClickListener(this);
-        sevenBtn.setOnClickListener(this);
-        eightBtn.setOnClickListener(this);
-        nineBtn.setOnClickListener(this);
+        buttonZero.setOnClickListener(this);
+        buttonOne.setOnClickListener(this);
+        buttonTwo.setOnClickListener(this);
+        buttonThree.setOnClickListener(this);
+        buttonFour.setOnClickListener(this);
+        buttonFive.setOnClickListener(this);
+        buttonSix.setOnClickListener(this);
+        buttonSeven.setOnClickListener(this);
+        buttonEight.setOnClickListener(this);
+        buttonNine.setOnClickListener(this);
 
-        equalsBtn.setOnClickListener(this);
-        dotBtn.setOnClickListener(this);
-        clearBtn.setOnClickListener(this);
-        backspaceBtn.setOnClickListener(this);
-        addBtn.setOnClickListener(this);
-        subBtn.setOnClickListener(this);
-        multiplyBtn.setOnClickListener(this);
-        divideBtn.setOnClickListener(this);
+        equalsButton.setOnClickListener(this);
+        dotButton.setOnClickListener(this);
+        clearButton.setOnClickListener(this);
+        backspaceButton.setOnClickListener(this);
+        addButton.setOnClickListener(this);
+        subtractButton.setOnClickListener(this);
+        multiplyButton.setOnClickListener(this);
+        divideButton.setOnClickListener(this);
 
         vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
+        //String initialisations
+        final String ZERO = "0";
+        final String ONE = "1";
+        final String TWO = "2";
+        final String THREE = "3";
+        final String FOUR = "4";
+        final String FIVE = "5";
+        final String SIX = "6";
+        final String SEVEN = "7";
+        final String EIGHT = "8";
+        final String NINE = "9";
+        final String DOT = ".";
+        final String EMPTY_STRING = "";
+
         vibrator.vibrate(10); //used to get haptic feedback for every button click
         int id = view.getId();
-        String exp = expressionTextView.getText().toString();
+        String expression = expressionTextView.getText().toString();
 
         switch (id) {
             case R.id.equals:
                 calculate();
                 break;
             case R.id.zero:
-                generateExpression("0");
+                generateExpression(ZERO);
                 break;
             case R.id.one:
-                generateExpression("1");
+                generateExpression(ONE);
                 break;
             case R.id.two:
-                generateExpression("2");
+                generateExpression(TWO);
                 break;
             case R.id.three:
-                generateExpression("3");
+                generateExpression(THREE);
                 break;
             case R.id.four:
-                generateExpression("4");
+                generateExpression(FOUR);
                 break;
             case R.id.five:
-                generateExpression("5");
+                generateExpression(FIVE);
                 break;
             case R.id.six:
-                generateExpression("6");
+                generateExpression(SIX);
                 break;
             case R.id.seven:
-                generateExpression("7");
+                generateExpression(SEVEN);
                 break;
             case R.id.eight:
-                generateExpression("8");
+                generateExpression(EIGHT);
                 break;
             case R.id.nine:
-                generateExpression("9");
+                generateExpression(NINE);
                 break;
             case R.id.plus:
-                generateExpression("+");
+                generateExpression(PLUS);
                 break;
             case R.id.minus:
-                generateExpression("-");
+                generateExpression(MINUS);
                 break;
             case R.id.multiply:
-                generateExpression("*");
+                generateExpression(MULTIPLY);
                 break;
             case R.id.divide:
-                generateExpression("/");
+                generateExpression(DIVIDE);
                 break;
             case R.id.clear:
-                expressionTextView.setText("");
-                resultTextView.setText("");
+                expressionTextView.setText(EMPTY_STRING);
+                resultTextView.setText(EMPTY_STRING);
                 break;
             case R.id.backspace:
-                int expLength = exp.length();
-                if (expLength > 0) {
-                    expressionTextView.setText(exp.substring(0, expLength - 1));
-                }
+                int expressionLength = expression.length();
+                if (expressionLength > 0)
+                    expressionTextView.setText(expression.substring(0, expressionLength - 1));
                 break;
             case R.id.dot:
-                String dotExpression = "[0-9]+\\.[0-9]+";
-                generateExpression(".");
+                //String dotExpression = "[0-9]+\\.[0-9]+";
+                generateExpression(DOT);
                 break;
         }
     }
@@ -152,12 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Are you sure ?")
                 .setMessage("You want to exit ?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
+                .setPositiveButton("Yes", (dialog, which) -> finish())
                 .setNegativeButton("No", null).show();
     }
 
@@ -183,17 +199,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         char operator = exp.charAt(lhsString.length());
         Log.i("OPERATOR", "operator: " + operator);
-        switch (operator) {
-            case '+':
+        switch (String.valueOf(operator)) {
+            case PLUS:
                 answer = lhs + rhs;
                 break;
-            case '-':
+            case MINUS:
                 answer = lhs - rhs;
                 break;
-            case '*':
+            case MULTIPLY:
                 answer = lhs * rhs;
                 break;
-            case '/':
+            case DIVIDE:
                 answer = lhs / rhs;
                 break;
             default:
@@ -213,13 +229,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String previousOut = resultTextView.getText().toString();
         String mathExpression = "[+-]?[0-9]+(\\.[0-9]+)?[\\*+\\-/][+-]?[0-9]+(\\.[0-9]+)?";
 
-        //if condition test
+        // conditions for error handling
 
         if (isSpecialChar(val)) {
-            if (exp.matches(mathExpression) && previousOut.equals("")) {//to check whether, the expression is valid or not using RegEx(error handling)
+            // to check whether, the expression is valid or not using RegEx(error handling)
+            if (exp.matches(mathExpression) && previousOut.equals("")) {
                 return;
             }
-            if (!previousOut.equals("")) { //if previous output is not empty then to append the special character at the end of the previous output
+            // if previous output is not empty then to append the special character at the end of the previous output
+            if (!previousOut.equals("")) {
                 resultTextView.setText("");
                 expressionTextView.setText(String.format("%s%s", previousOut, val));
                 lhsString = previousOut;
@@ -228,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
 
-            lhsString = exp; // to store the lhs part after getting the operator
+            lhsString = exp; // to store the LHS part after getting the operator
             lhs = Float.parseFloat(lhsString);
             Log.i("LHS", "Value of lhs: " + lhs);
         }
@@ -245,4 +263,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]").matcher(str).find();
     }
 
+    private void setAppTheme() {
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        //bitwise AND operator(&) is used for binary digits or bits of input values.
+        //logical AND operator(&&) is used for boolean expressions
+        Log.i(TAG, "onCreate: " + currentNightMode);
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                // Night mode is active, we're using dark theme
+                setTheme(R.style.DarkTheme);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                // Night mode is not active, we're using the light theme
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                // If mode is not defined
+                setTheme(R.style.LightTheme);
+                break;
+        }
+    }
 }
