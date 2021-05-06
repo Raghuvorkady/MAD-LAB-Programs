@@ -2,7 +2,6 @@ package csmp.part_a.p2;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -14,6 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,12 +24,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final String MINUS = "-";
     private final String MULTIPLY = "*";
     private final String DIVIDE = "/";
+    private final String INFINITY = "infinity";
 
     private TextView resultTextView;
     private TextView expressionTextView;
-
-    private float lhs, rhs, answer;
-    private String lhsString, rhsString, answerString;
 
     private Vibrator vibrator;
 
@@ -102,10 +101,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String EMPTY_STRING = "";
 
         vibrator.vibrate(10); //used to get haptic feedback for every button click
-        int id = view.getId();
         String expression = expressionTextView.getText().toString();
 
-        switch (id) {
+        switch (view.getId()) {
             case R.id.equals:
                 calculate();
                 break;
@@ -159,108 +157,82 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int expressionLength = expression.length();
                 if (expressionLength > 0)
                     expressionTextView.setText(expression.substring(0, expressionLength - 1));
+
+                if (!resultTextView.getText().toString().isEmpty())
+                    resultTextView.setText(null);
+
                 break;
             case R.id.dot:
-                //String dotExpression = "[0-9]+\\.[0-9]+";
                 generateExpression(DOT);
                 break;
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Are you sure ?")
-                .setMessage("You want to exit ?")
-                .setPositiveButton("Yes", (dialog, which) -> finish())
-                .setNegativeButton("No", null).show();
+    public void generateExpression(String value) {
+        String expression = expressionTextView.getText().toString();
+        String previousOutput = resultTextView.getText().toString();
+        String text;
+
+        // conditions for error handling
+        if (previousOutput.isEmpty()) {
+            text = expression + value;
+            expressionTextView.setText(text);
+        } else {
+            if (previousOutput.equalsIgnoreCase(INFINITY)) { // to not append while displaying infinity
+                return;
+            } else {
+                text = previousOutput + value;
+                expressionTextView.setText(text); // to append output to the expression
+                resultTextView.setText("");
+            }
+        }
     }
 
     private void calculate() {
         String mathExpression = "[+-]?[0-9]+(\\.[0-9]+)?[\\*+\\-/][+-]?[0-9]+(\\.[0-9]+)?";
-        String exp = expressionTextView.getText().toString();
+        String operators = "[\\*+\\-/]";
+        String expression = expressionTextView.getText().toString();
+        float answer = 0;
 
-        if (exp.matches("[0-9]+")) {
-            Log.i("MATCH", "FOUND: ");
-            return;
-        } else Log.i("MATCH", "NOT FOUND: ");
+        if (expression.matches(mathExpression)) {
+            String[] operands = expression.split(operators);
+            String lhs1 = operands[0];
+            String rhs1 = operands[1];
+            float n1 = Float.parseFloat(lhs1);
+            float n2 = Float.parseFloat(rhs1);
 
-        if (exp.equals("") || exp.equals(".") || isSpecialChar("" + exp.charAt(exp.length() - 1))) {
-            return;
-        }
-        if (!exp.matches(mathExpression)) {
-            return;
-        }
+            Pattern pattern = Pattern.compile(operators);
+            Matcher matcher = pattern.matcher(expression);
 
-        rhsString = exp.substring(lhsString.length() + 1);
-        rhs = Float.parseFloat(rhsString);
-        Log.i("RHS", "Value of rhs: " + rhs);
+            if (matcher.find()) {
+                int index = matcher.start();
+                char operator = expression.charAt(index);
 
-        char operator = exp.charAt(lhsString.length());
-        Log.i("OPERATOR", "operator: " + operator);
-        switch (String.valueOf(operator)) {
-            case PLUS:
-                answer = lhs + rhs;
-                break;
-            case MINUS:
-                answer = lhs - rhs;
-                break;
-            case MULTIPLY:
-                answer = lhs * rhs;
-                break;
-            case DIVIDE:
-                answer = lhs / rhs;
-                break;
-            default:
-                Log.i("Invalid", "Invalid answer");
-        }
-        Log.i("ANSWER", "answer: " + answer);
-
-        if (answer % 1 == 0) // to convert a float to int if the float is having zeroes in their decimal, Ex: 3.0 to 3
-            answerString = String.valueOf((int) answer);
-        else answerString = String.valueOf(answer);
-
-        resultTextView.setText(answerString);
-    }
-
-    public void generateExpression(String val) {
-        String exp = expressionTextView.getText().toString();
-        String previousOut = resultTextView.getText().toString();
-        String mathExpression = "[+-]?[0-9]+(\\.[0-9]+)?[\\*+\\-/][+-]?[0-9]+(\\.[0-9]+)?";
-
-        // conditions for error handling
-
-        if (isSpecialChar(val)) {
-            // to check whether, the expression is valid or not using RegEx(error handling)
-            if (exp.matches(mathExpression) && previousOut.equals("")) {
-                return;
-            }
-            // if previous output is not empty then to append the special character at the end of the previous output
-            if (!previousOut.equals("")) {
-                resultTextView.setText("");
-                expressionTextView.setText(String.format("%s%s", previousOut, val));
-                lhsString = previousOut;
-                lhs = Float.parseFloat(lhsString);
-                Log.i("LHS", "Value of lhs: " + lhs);
-                return;
+                switch (String.valueOf(operator)) {
+                    case PLUS:
+                        answer = n1 + n2;
+                        break;
+                    case MINUS:
+                        answer = n1 - n2;
+                        break;
+                    case MULTIPLY:
+                        answer = n1 * n2;
+                        break;
+                    case DIVIDE:
+                        if (n2 == 0) {
+                            resultTextView.setText(INFINITY);
+                            return;
+                        } else
+                            answer = n1 / n2;
+                        break;
+                    default:
+                        Log.i("Invalid", "Invalid answer");
+                }
             }
 
-            lhsString = exp; // to store the LHS part after getting the operator
-            lhs = Float.parseFloat(lhsString);
-            Log.i("LHS", "Value of lhs: " + lhs);
+            DecimalFormat decimalFormat = new DecimalFormat("#.####");
+            resultTextView.setText(decimalFormat.format(answer));
         }
-
-        if (previousOut.equals("")) {
-            expressionTextView.setText(String.format("%s%s", exp, val));
-        } else {
-            resultTextView.setText("");
-            expressionTextView.setText(String.format("%s%s", "", val));
-        }
-    }
-
-    public boolean isSpecialChar(String str) {
-        return Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]").matcher(str).find();
     }
 
     private void setAppTheme() {
@@ -280,5 +252,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setTheme(R.style.LightTheme);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Are you sure ?")
+                .setMessage("You want to exit ?")
+                .setPositiveButton("Yes", (dialog, which) -> finish())
+                .setNegativeButton("No", null).show();
     }
 }
