@@ -189,8 +189,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calculate() {
-        String mathExpression = "[+-]?[0-9]+(\\.[0-9]+)?[\\*+\\-/][+-]?[0-9]+(\\.[0-9]+)?";
-        String operators = "[\\*+\\-/]";
+        String mathExpression = "[+-]?[0-9]+(\\.[0-9]+)?[*+\\-/][+-]?[0-9]+(\\.[0-9]+)?";
+        String operators = "[*+\\-/]";
         String expression = expressionTextView.getText().toString();
         float answer = 0;
 
