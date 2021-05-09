@@ -195,17 +195,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         float answer = 0;
 
         if (expression.matches(mathExpression)) {
-            String[] operands = expression.split(operators);
-            String lhs1 = operands[0];
-            String rhs1 = operands[1];
-            float n1 = Float.parseFloat(lhs1);
-            float n2 = Float.parseFloat(rhs1);
+            String[] operands = expression.split(operators); // to split the string to get the operands acc to any Math operator
+            String leftOperand = operands[0];
+            String rightOperand = operands[1];
+            float n1 = Float.parseFloat(leftOperand);
+            float n2 = Float.parseFloat(rightOperand);
 
             Pattern pattern = Pattern.compile(operators);
-            Matcher matcher = pattern.matcher(expression);
+            Matcher matcher = pattern.matcher(expression);  // Regex
 
-            if (matcher.find()) {
-                int index = matcher.start();
+            if (matcher.find()) { // tries to find the matching character
+                int index = matcher.start(); // returns the first index of the previous matched character
                 char operator = expression.charAt(index);
 
                 switch (String.valueOf(operator)) {
