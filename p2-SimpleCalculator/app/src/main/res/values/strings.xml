@@ -25,5 +25,6 @@
     <string name="about">About</string>
     <string name="feedback">Feedback</string>
     <string name="exit">Exit</string>
+    <string name="doubleZeroNum">00</string>
 
 </resources>

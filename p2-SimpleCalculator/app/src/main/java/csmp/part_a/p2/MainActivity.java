@@ -3,6 +3,7 @@ package csmp.part_a.p2;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView expressionTextView;
 
     private Vibrator vibrator;
+    private boolean isDarkThemeEnabled;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonSeven = findViewById(R.id.seven);
         Button buttonEight = findViewById(R.id.eight);
         Button buttonNine = findViewById(R.id.nine);
+        Button buttonZeroZero = findViewById(R.id.doubleZero);
 
         Button equalsButton = findViewById(R.id.equals);
         Button dotButton = findViewById(R.id.dot);
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSeven.setOnClickListener(this);
         buttonEight.setOnClickListener(this);
         buttonNine.setOnClickListener(this);
+        buttonZeroZero.setOnClickListener(this);
 
         equalsButton.setOnClickListener(this);
         dotButton.setOnClickListener(this);
@@ -97,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String SEVEN = "7";
         final String EIGHT = "8";
         final String NINE = "9";
+        final String ZERO_ZERO = "00";
         final String DOT = ".";
         final String EMPTY_STRING = "";
 
@@ -136,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.nine:
                 generateExpression(NINE);
+                break;
+            case R.id.doubleZero:
+                generateExpression(ZERO_ZERO);
                 break;
             case R.id.plus:
                 generateExpression(PLUS);
@@ -243,12 +253,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_YES:
                 // Night mode is active, we're using dark theme
+                isDarkThemeEnabled = true;
                 setTheme(R.style.DarkTheme);
                 break;
             case Configuration.UI_MODE_NIGHT_NO:
                 // Night mode is not active, we're using the light theme
             case Configuration.UI_MODE_NIGHT_UNDEFINED:
                 // If mode is not defined
+                isDarkThemeEnabled = false;
                 setTheme(R.style.LightTheme);
                 break;
         }
@@ -257,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(isDarkThemeEnabled ? R.drawable.ic_warning_light : R.drawable.ic_warning_dark)
                 .setTitle("Are you sure ?")
                 .setMessage("You want to exit ?")
                 .setPositiveButton("Yes", (dialog, which) -> finish())

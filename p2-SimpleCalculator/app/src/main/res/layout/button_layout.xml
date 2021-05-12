@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/bgColor"
     android:columnCount="4"
     android:rowCount="5">
 
@@ -14,10 +15,12 @@
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_gravity=""
-        android:background="@color/red"
+        android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/clearTxt"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -28,9 +31,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/backspace"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -41,9 +46,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/divide"
         android:textColor="?attr/textColor"
         android:textSize="35sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -54,9 +61,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/sevenNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -67,9 +76,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/eightNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -80,9 +91,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/nineNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -93,9 +106,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/multiplySymbol"
         android:textColor="?attr/textColor"
         android:textSize="35sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -106,9 +121,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/fourNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -119,9 +136,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/fiveNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -132,9 +151,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/sixNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -145,9 +166,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/minusSymbol"
         android:textColor="?attr/textColor"
         android:textSize="35sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -158,9 +181,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/oneNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -171,9 +196,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/twoNum"
         android:textColor="?attr/textColor"
         android:textSize="26sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -184,9 +211,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/threeNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -197,9 +226,26 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/plusSymbol"
         android:textColor="?attr/textColor"
         android:textSize="35sp"
+        tools:ignore="UnusedAttribute"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:id="@+id/doubleZero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/doubleZeroNum"
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -210,9 +256,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/dotSymbol"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -223,9 +271,11 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/zeroNum"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
     <Button
@@ -233,14 +283,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_rowWeight="1"
-        android:layout_columnSpan="2"
+        android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        android:background="@color/orange"
-        android:focusable="true"
+        android:background="@color/app_orange"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/equalsSymbol"
         android:textColor="?attr/textColor"
         android:textSize="35sp"
+        tools:ignore="UnusedAttribute"
         tools:targetApi="lollipop" />
 
 </GridLayout>
