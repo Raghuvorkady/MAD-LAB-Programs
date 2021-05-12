@@ -3,5 +3,6 @@
     <attr name="inputBgColor" format="color" />
     <attr name="bgColor" format="color" />
     <attr name="textColor" format="color" />
-    <attr name="metaTextColor" format="color" />
+    <attr name="metaTextBgColor" format="color" />
+    <attr name="statusBarBgColor" format="color" />
 </resources>

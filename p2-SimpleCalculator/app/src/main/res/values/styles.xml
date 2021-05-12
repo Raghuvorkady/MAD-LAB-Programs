@@ -1,25 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="colorAccent">@color/app_orange</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
     </style>
 
     <style name="LightTheme" parent="AppTheme">
         <item name="textColor">#000000</item>
-        <item name="metaTextColor">#606060</item>
-        <item name="bgColor">#ffffff</item>
+        <item name="metaTextBgColor">@color/white</item>
+        <item name="bgColor">@color/white30</item>
         <item name="inputBgColor">#f4f4f4</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <style name="DarkTheme" parent="AppTheme">
         <item name="textColor">#ffffff</item>
-        <item name="metaTextColor">#aeaeae</item>
-        <item name="bgColor">#000000</item>
+        <item name="metaTextBgColor">#22252D</item>
+        <item name="bgColor">@color/app_grey</item>
         <item name="inputBgColor">#424242</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">#22252D</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
     </style>
 
 </resources>

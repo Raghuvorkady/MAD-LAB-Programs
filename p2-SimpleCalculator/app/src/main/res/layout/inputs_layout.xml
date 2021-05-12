@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/bgColor"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/expression"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/inputBgColor"
-        android:gravity="center_vertical|end"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColor="?attr/metaTextColor"
-        android:textSize="24sp"
-        app:fontFamily="monospace" />
 
     <TextView
         android:id="@+id/outputView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/inputBgColor"
+        android:fontFamily="@font/open_sans_bold"
         android:gravity="center_vertical|end"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        app:fontFamily="monospace" />
+        android:textColor="@color/app_orange"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/expression"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/app_orange"
+        android:textSize="30sp" />
 
 </LinearLayout>
