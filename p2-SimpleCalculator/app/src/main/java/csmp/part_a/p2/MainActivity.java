@@ -9,17 +9,21 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private final String TAG = MainActivity.class.getSimpleName();
     private final String PLUS = "+";
@@ -65,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button multiplyButton = findViewById(R.id.multiply);
         Button divideButton = findViewById(R.id.divide);
 
+        SwitchCompat appThemeSwitch = findViewById(R.id.appThemeSwitch);
+
         buttonZero.setOnClickListener(this);
         buttonOne.setOnClickListener(this);
         buttonTwo.setOnClickListener(this);
@@ -85,6 +91,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         subtractButton.setOnClickListener(this);
         multiplyButton.setOnClickListener(this);
         divideButton.setOnClickListener(this);
+
+        appThemeSwitch.setOnCheckedChangeListener(this);
 
         vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
     }
@@ -274,5 +282,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setMessage("You want to exit ?")
                 .setPositiveButton("Yes", (dialog, which) -> finish())
                 .setNegativeButton("No", null).show();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        if (isChecked)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
+    public void makeToast(String toastMessage) {
+        Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
     }
 }
