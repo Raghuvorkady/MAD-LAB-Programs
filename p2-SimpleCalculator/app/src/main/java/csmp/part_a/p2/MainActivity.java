@@ -30,10 +30,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final String MINUS = "-";
     private final String MULTIPLY = "*";
     private final String DIVIDE = "/";
+    private final String PERCENTAGE = "%";
     private final String INFINITY = "infinity";
 
     private TextView resultTextView;
     private TextView expressionTextView;
+
+    private SwitchCompat appThemeSwitch;
 
     private Vibrator vibrator;
     private boolean isDarkThemeEnabled;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button equalsButton = findViewById(R.id.equals);
         Button dotButton = findViewById(R.id.dot);
+        Button percentageButton = findViewById(R.id.percentage);
         Button clearButton = findViewById(R.id.clear);
         Button backspaceButton = findViewById(R.id.backspace);
         Button addButton = findViewById(R.id.plus);
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button multiplyButton = findViewById(R.id.multiply);
         Button divideButton = findViewById(R.id.divide);
 
-        SwitchCompat appThemeSwitch = findViewById(R.id.appThemeSwitch);
+        appThemeSwitch = findViewById(R.id.appThemeSwitch);
 
         buttonZero.setOnClickListener(this);
         buttonOne.setOnClickListener(this);
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         equalsButton.setOnClickListener(this);
         dotButton.setOnClickListener(this);
+        percentageButton.setOnClickListener(this);
         clearButton.setOnClickListener(this);
         backspaceButton.setOnClickListener(this);
         addButton.setOnClickListener(this);
@@ -92,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         multiplyButton.setOnClickListener(this);
         divideButton.setOnClickListener(this);
 
+        //android:tooltipText="Enable or disable dark mode"
+        appThemeSwitch.setChecked(false);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            appThemeSwitch.setTooltipText("Enable dark mode");
+        }
         appThemeSwitch.setOnCheckedChangeListener(this);
 
         vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
@@ -183,6 +193,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.dot:
                 generateExpression(DOT);
                 break;
+            case R.id.percentage:
+                generateExpression(PERCENTAGE);
+                break;
         }
     }
 
@@ -207,8 +220,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calculate() {
-        String mathExpression = "[+-]?[0-9]+(\\.[0-9]+)?[*+\\-/][+-]?[0-9]+(\\.[0-9]+)?";
-        String operators = "[*+\\-/]";
+        String mathExpression = "[+-]?[0-9]+(\\.[0-9]+)?[*+\\-/%][+-]?[0-9]+(\\.[0-9]+)?";
+        String operators = "[*+\\-/%]";
         String expression = expressionTextView.getText().toString();
         float answer = 0;
 
@@ -216,8 +229,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String[] operands = expression.split(operators); // to split the string to get the operands acc to any Math operator
             String leftOperand = operands[0];
             String rightOperand = operands[1];
-            float n1 = Float.parseFloat(leftOperand);
-            float n2 = Float.parseFloat(rightOperand);
+            float n1, n2;
+            try {
+                n1 = Float.parseFloat(leftOperand);
+                n2 = Float.parseFloat(rightOperand);
+            } catch (Exception e) {
+                makeToast("Currently the app doesn't this type of expression...☹");
+                return;
+            }
 
             Pattern pattern = Pattern.compile(operators);
             Matcher matcher = pattern.matcher(expression);  // Regex
@@ -242,6 +261,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             return;
                         } else
                             answer = n1 / n2;
+                        break;
+                    case PERCENTAGE:
+                        answer = n1 / 100 * n2;
                         break;
                     default:
                         Log.i("Invalid", "Invalid answer");
@@ -284,11 +306,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setNegativeButton("No", null).show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        if (isChecked)
+        if (isChecked) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            appThemeSwitch.setTooltipText("Disable dark mode");
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            appThemeSwitch.setTooltipText("Enable dark mode");
+        }
     }
 
     public void makeToast(String toastMessage) {

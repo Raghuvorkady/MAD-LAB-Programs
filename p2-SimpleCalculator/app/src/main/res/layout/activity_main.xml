@@ -15,7 +15,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:thumb="@drawable/switch_thumb"
-        android:tooltipText="Enable or disable dark mode"
         app:track="@drawable/switch_track" />
 
     <include
