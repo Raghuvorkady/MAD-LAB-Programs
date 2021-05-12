@@ -23,21 +23,7 @@
         tools:targetApi="lollipop" />
 
     <Button
-        android:id="@+id/percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity=""
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/percentageSymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
 
-    <Button
         android:id="@+id/backspace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,6 +33,21 @@
         android:background="?attr/bgColor"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="@string/backspace"
+        android:textColor="?attr/textColor"
+        android:textSize="30sp"
+        tools:ignore="UnusedAttribute"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:id="@+id/percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:background="?attr/bgColor"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/percentageSymbol"
         android:textColor="?attr/textColor"
         android:textSize="30sp"
         tools:ignore="UnusedAttribute"

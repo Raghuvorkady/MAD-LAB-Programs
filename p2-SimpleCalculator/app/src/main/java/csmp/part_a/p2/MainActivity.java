@@ -312,8 +312,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isChecked) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             appThemeSwitch.setTooltipText("Disable dark mode");
-        }
-        else {
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             appThemeSwitch.setTooltipText("Enable dark mode");
         }
