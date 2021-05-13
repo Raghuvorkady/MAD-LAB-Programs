@@ -62,7 +62,7 @@
         android:layout_gravity="fill"
         android:background="?attr/bgColor"
         android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/divide"
+        android:text="@string/divideSymbol"
         android:textColor="?attr/textColor"
         android:textSize="35sp"
         tools:ignore="UnusedAttribute"
