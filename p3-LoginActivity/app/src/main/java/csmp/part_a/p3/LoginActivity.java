@@ -35,7 +35,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInButton.setOnClickListener(this);
     }
 
-    private void getValueFromUserBundle() { //getting values from bundles
+    // a method for getting values from bundles
+    private void getValueFromUserBundle() {
         username = getIntent().getExtras().getString(Constants.USERNAME_KEY);
         password = getIntent().getExtras().getString(Constants.PASSWORD_KEY);
     }
@@ -43,18 +44,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        attempts++;
-        if (attempts > MAX_ATTEMPTS) {
-            makeToast("Failed Login Attempts");
-            signInButton.setEnabled(false);
-        } else {
-            String usernameLocal, passwordLocal;
-            usernameLocal = signInUsernameField.getText().toString();
-            passwordLocal = signInPasswordField.getText().toString();
+        String usernameLocal = signInUsernameField.getText().toString();
+        String passwordLocal = signInPasswordField.getText().toString();
 
-            if (usernameLocal.equals(username) && passwordLocal.equals(password))
-                makeToast("Successful Login");
-            else makeToast("Login Failed");
+        if (usernameLocal.equals(username) && passwordLocal.equals(password))
+            makeToast("Successful Login!");
+        else {
+            if (attempts < MAX_ATTEMPTS)
+                makeToast("Login attempts remaining: " + (MAX_ATTEMPTS - attempts));
+            else {
+                makeToast("Failed Login Attempts");
+                signInButton.setEnabled(false);
+            }
+            attempts++;
         }
     }
 
