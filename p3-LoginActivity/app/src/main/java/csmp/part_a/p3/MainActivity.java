@@ -1,5 +1,6 @@
 package csmp.part_a.p3;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +14,9 @@ import androidx.appcompat.widget.SwitchCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    EditText signUpUsernameField, signUpPasswordField;
     Button signUpButton;
     SwitchCompat pwdRuleSwitch;
-    EditText signUpUsernameField, signUpPasswordField;
     TextView pwdRuleTextView;
 
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         signUpButton.setOnClickListener(this);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -48,21 +50,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 password = signUpPasswordField.getText().toString();
 
                 String pwdValidationRegex = "^(?=.*[0-9])"
-                        + "(?=.*[a-z])(?=.*[A-Z])"
+                        + "(?=.*[a-z])"
+                        + "(?=.*[A-Z])"
                         + "(?=.*[@#$%^&+=])"
                         + "(?=\\S+$).{8,}$";
                 //For ref: https://www.geeksforgeeks.org/how-to-validate-a-password-using-regular-expressions-in-java/
 
-                if (username.isEmpty()) {
+                if (username.isEmpty())
                     makeToast("Please don't forget to fill up username...");
-                }
-                if (!password.matches(pwdValidationRegex)) {
+                if (!password.matches(pwdValidationRegex))
                     makeToast("Password validation failed!");
-                } else {
+                else {
                     Bundle userBundle = new Bundle();
                     userBundle.putString(Constants.USERNAME_KEY, username);
                     userBundle.putString(Constants.PASSWORD_KEY, password);
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(this, LoginActivity.class);
                     intent.putExtras(userBundle);
                     startActivity(intent);
                 }
@@ -71,6 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void makeToast(String toastMessage) {
-        Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show();
     }
 }

@@ -8,25 +8,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/signupText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:background="@color/grey"
-            android:padding="10dp"
             android:layout_marginTop="40dp"
+            android:background="@color/grey"
             android:gravity="center"
-            android:text="SIGNUP ACTIVITY" />
+            android:padding="10dp"
+            android:text="@string/signup_activity"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/signupText"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_below="@id/textView2"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
@@ -36,8 +40,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:autofillHints="@string/username"
                 android:ems="10"
-                android:hint="username"
+                android:hint="@string/username"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -46,8 +51,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:autofillHints="@string/password"
                 android:ems="10"
-                android:hint="password"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
 
             <LinearLayout
@@ -61,9 +67,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_weight="1"
-                    android:textSize="12sp"
+                    android:text="@string/toggle_password"
                     android:textColor="@color/textGrey"
-                    android:text="Toggle here to view Rules for PASSWORD" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/pwdRuleTextView"
@@ -86,9 +92,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="40dp"
-                android:textAllCaps="false"
-                android:text="Sign up" />
+                android:text="@string/sign_up"
+                android:textAllCaps="false" />
         </LinearLayout>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

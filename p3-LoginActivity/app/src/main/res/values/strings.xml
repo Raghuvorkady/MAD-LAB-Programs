@@ -3,4 +3,11 @@
     <string name="pwdRules">
         ➢ Password should contain uppercase and lowercase letters.\n➢ Password should contain letters and numbers.\n➢ Password should contain special characters.\n➢ Minimum length of the password (the default value is 8).
     </string>
+    <string name="login_activity">LOGIN ACTIVITY</string>
+    <string name="signup_activity">SIGNUP ACTIVITY</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="toggle_password">Toggle here to view Rules for PASSWORD</string>
 </resources>
