@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        signUpUsernameField = (EditText) findViewById(R.id.signUpUsernameEditText);
-        signUpPasswordField = (EditText) findViewById(R.id.signUpPasswordEditText);
-        signUpButton = (Button) findViewById(R.id.signUpButton);
-        pwdRuleSwitch = (SwitchCompat) findViewById(R.id.pwdRuleSwitch);
-        pwdRuleTextView = (TextView) findViewById(R.id.pwdRuleTextView);
+        signUpUsernameField = findViewById(R.id.signUpUsernameEditText);
+        signUpPasswordField = findViewById(R.id.signUpPasswordEditText);
+        signUpButton = findViewById(R.id.signUpButton);
+        pwdRuleSwitch = findViewById(R.id.pwdRuleSwitch);
+        pwdRuleTextView = findViewById(R.id.pwdRuleTextView);
 
         pwdRuleSwitch.setOnCheckedChangeListener(this);
         signUpButton.setOnClickListener(this);

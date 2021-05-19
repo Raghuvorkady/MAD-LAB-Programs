@@ -24,9 +24,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        signInUsernameField = (EditText) findViewById(R.id.signInUsernameEditText);
-        signInPasswordField = (EditText) findViewById(R.id.signInPasswordEditText);
-        signInButton = (Button) findViewById(R.id.signInButton);
+        signInUsernameField = findViewById(R.id.signInUsernameEditText);
+        signInPasswordField = findViewById(R.id.signInPasswordEditText);
+        signInButton = findViewById(R.id.signInButton);
 
         attempts = 0;
 
