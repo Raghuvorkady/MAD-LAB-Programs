@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+# MAD-LAB-Programs List
 
-You can use the [editor on GitHub](https://github.com/Raghuvorkady/MAD-LAB-Programs/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Raghuvorkady/MAD-LAB-Programs/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+| Sl.No | Part-A Lab Programs | Link |
+|:---:|--|--|
+| 1. | Visiting Card | [Click here](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p1-VisitingCard/) |
+| 2. | Simple Calculator | [Click here](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p2-SimpleCalculator/) |
+| 3. | Login Activity | [Click here](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p3-LoginActivity/) |
+| 4. | Wallpaper App | [Click here](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p4-WallpaperApp/) |
+| 5. | Counter App | [Click here](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p5-CounterApp/) |
+| 6. | XML and Json Parser App | [Click here](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p6-ParsingXmlAndJson/) |
+| 7. | Text to Speech App | [Click here](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p7-TextToSpeechApp/) |
+| 8. | Caller App | [Click here](p8-CallAndSaveApp/) |
+  
+## References:
+1. To download latest Android Studio, click [here](https://developer.android.com/studio).
+2. Click [here](https://youtu.be/0zx_eFyHRU0?t=371) to watch installation video.
+2. To enroll in Android Developer Fundamentals Course, click [here](https://developer.android.com/courses/fundamentals-training/overview-v2).
+3. For Android documentation, click [here](https://developer.android.com/guide).
