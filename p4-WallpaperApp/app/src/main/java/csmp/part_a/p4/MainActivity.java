@@ -1,7 +1,5 @@
 package csmp.part_a.p4;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
 import android.content.Intent;
@@ -17,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,14 +25,15 @@ import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button changeWallpaperButton, addImageButton;
-    static final int REQUEST_IMAGE_GET = 1;
-    ImageView imageView;
-    TextView selectedImages;
-    EditText timeIntervalText;
 
-    List<Uri> imagesList = new ArrayList<>();
-    Handler handler;
+    static final int REQUEST_IMAGE_GET = 1;
+    private ImageView imageView;
+    private TextView selectedImagesTextBox;
+    private EditText timeIntervalText;
+
+    private List<Uri> images; // to store selected images
+    private Handler handler;
+    private Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.imageView);
-        selectedImages = findViewById(R.id.imagesListTextView);
-        changeWallpaperButton = findViewById(R.id.changeButton);
-        addImageButton = findViewById(R.id.addImage);
+        selectedImagesTextBox = findViewById(R.id.imagesListTextView);
+        Button changeWallpaperButton = findViewById(R.id.changeButton);
+        Button addImageButton = findViewById(R.id.addImage);
         timeIntervalText = findViewById(R.id.editTextTime);
+        Button stopButton = findViewById(R.id.stopButton);
 
-        changeWallpaperButton.setOnClickListener(this);
         addImageButton.setOnClickListener(this);
+        changeWallpaperButton.setOnClickListener(this);
+        stopButton.setOnClickListener(this);
 
+        images = new ArrayList<>();
         handler = new Handler();
     }
 
@@ -55,21 +59,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.addImage:
+                selectImage();
+                break;
             case R.id.changeButton:
-                if (imagesList.size() != 0) {
+                if (images.size() != 0) {
                     String time = timeIntervalText.getText().toString();
                     int timeDelayInSeconds;
 
-                    if (time.isEmpty()) {
+                    if (time.isEmpty())
                         makeToast("Please enter the time interval...");
-                    } else {
+                    else {
                         timeDelayInSeconds = Integer.parseInt(time);
                         scheduleWallpaperChange(timeDelayInSeconds);
                     }
                 } else makeToast("Select at least one image for wallpaper");
                 break;
-            case R.id.addImage:
-                selectImage();
+            case R.id.stopButton:
+                makeToast("Stopped");
+                handler.removeCallbacks(runnable);
                 break;
         }
     }
@@ -85,19 +93,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
             Uri imageUri = data.getData();
-            imagesList.add(imageUri);
+            images.add(imageUri);
 
             File file = new File(imageUri.getPath());
-            selectedImages.append(file.getName() + "\n");
+            String text = file.getName() + "\n";
+            selectedImagesTextBox.append(text);
+            makeToast(text + " is selected");
         }
     }
 
     public void scheduleWallpaperChange(final int timeDelay) {
-        Runnable runnable = new Runnable() {
+        runnable = new Runnable() {
             @Override
             public void run() {
                 Random random = new Random();
-                int bound = imagesList.size();
+                int bound = images.size();
                 int randomInt = random.nextInt(bound);
                 makeToast("Selected wallpaper no: " + randomInt);
                 changeWallpaperFun(randomInt);
@@ -109,11 +119,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void changeWallpaperFun(int imageIndex) {
-        WallpaperManager wallpaperManager
-                = WallpaperManager.getInstance(getApplicationContext());
+        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
 
         try {
-            Uri uri = imagesList.get(imageIndex);
+            Uri uri = images.get(imageIndex);
             Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
             imageView.setImageBitmap(bitmap);
             wallpaperManager.setBitmap(bitmap);

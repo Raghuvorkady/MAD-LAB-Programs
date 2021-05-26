@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">WallpaperApp</string>
-    <string name="changeBtnText">Click here to change wallpaper</string>
+    <string name="changeBtnText">Change wallpaper</string>
     <string name="changing_wallpaper_application">CHANGING WALLPAPER APPLICATION</string>
     <string name="add_images">Add images</string>
     <string name="selected_images">Selected images:</string>
     <string name="no_image_selected">No image selected</string>
     <string name="enter_time_interval_nfor_changing_nwallpaper_in_seconds">enter time interval\nfor changing\nwallpaper in seconds:</string>
+    <string name="stop">Stop</string>
 </resources>
