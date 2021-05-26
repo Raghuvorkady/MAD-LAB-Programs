@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
-        android:text="Add images"
+        android:text="@string/add_images"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -64,7 +64,7 @@
             android:background="@color/brown"
             android:gravity="center"
             android:padding="5dp"
-            android:text="Selected images:"
+            android:text="@string/selected_images"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:layout_editor_absoluteX="152dp"
             tools:layout_editor_absoluteY="221dp" />
@@ -77,7 +77,7 @@
             android:layout_marginBottom="5dp"
             android:background="@color/lightBrown"
             android:gravity="center_horizontal"
-            android:hint="No image selected"
+            android:hint="@string/no_image_selected"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </LinearLayout>
 
@@ -90,7 +90,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/addImage"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/selected_images" />
 
     <EditText
         android:id="@+id/editTextTime"
@@ -99,12 +100,13 @@
         android:layout_marginTop="39dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="enter time interval\nfor changing\nwallpaper in seconds:"
+        android:hint="@string/enter_time_interval_nfor_changing_nwallpaper_in_seconds"
         android:inputType="number"
         android:padding="4dp"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:importantForAutofill="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

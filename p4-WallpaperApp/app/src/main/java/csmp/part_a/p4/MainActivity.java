@@ -2,6 +2,7 @@ package csmp.part_a.p4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -30,8 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView selectedImages;
     EditText timeIntervalText;
 
-    private final int THIRTY_SECONDS = 30000;
-    List<Uri> imagesList = new ArrayList<Uri>();
+    List<Uri> imagesList = new ArrayList<>();
     Handler handler;
 
     @Override
@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = (ImageView) findViewById(R.id.imageView);
-        selectedImages = (TextView) findViewById(R.id.imagesListTextView);
-        changeWallpaperButton = (Button) findViewById(R.id.changeButton);
-        addImageButton = (Button) findViewById(R.id.addImage);
-        timeIntervalText = (EditText) findViewById(R.id.editTextTime);
+        imageView = findViewById(R.id.imageView);
+        selectedImages = findViewById(R.id.imagesListTextView);
+        changeWallpaperButton = findViewById(R.id.changeButton);
+        addImageButton = findViewById(R.id.addImage);
+        timeIntervalText = findViewById(R.id.editTextTime);
 
         changeWallpaperButton.setOnClickListener(this);
         addImageButton.setOnClickListener(this);
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handler = new Handler();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -76,9 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void selectImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, REQUEST_IMAGE_GET);
-        }
+        startActivityForResult(intent, REQUEST_IMAGE_GET);
     }
 
     @Override
