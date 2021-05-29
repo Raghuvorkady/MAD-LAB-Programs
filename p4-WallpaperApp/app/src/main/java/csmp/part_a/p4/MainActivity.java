@@ -1,6 +1,5 @@
 package csmp.part_a.p4;
 
-import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,11 +8,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,14 +27,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
 
-    static final int REQUEST_IMAGE_GET = 1;
-    private ImageView imageView;
-    private TextView selectedImagesTextBox;
+    private static final int REQUEST_IMAGE_GET = 1;
+    private final String[] dropDownOptions = {"App", "Device"};
+    private final int[] appWallpapers = {R.drawable.wallpaper1, R.drawable.wallpaper2, R.drawable.wallpaper3, R.drawable.wallpaper4};
+
+    private TextView selectedImagesTextBox, selectedWallpaperText;
+    private Button addImageButton;
     private EditText timeIntervalText;
 
-    private List<Uri> images; // to store selected images
+    private List<Uri> addedImages; // to store selected images
     private Handler handler;
     private Runnable runnable;
 
@@ -40,46 +46,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = findViewById(R.id.imageView);
         selectedImagesTextBox = findViewById(R.id.imagesListTextView);
-        Button changeWallpaperButton = findViewById(R.id.changeButton);
-        Button addImageButton = findViewById(R.id.addImage);
+        ToggleButton changeWallpaperButton = findViewById(R.id.changeButton);
+        addImageButton = findViewById(R.id.addImage);
         timeIntervalText = findViewById(R.id.editTextTime);
-        Button stopButton = findViewById(R.id.stopButton);
+        selectedWallpaperText = findViewById(R.id.selectedWallpaperText);
+
+        addedImages = new ArrayList<>();
+        handler = new Handler();
+
+        Spinner spinner = findViewById(R.id.planets_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dropDownOptions);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         addImageButton.setOnClickListener(this);
-        changeWallpaperButton.setOnClickListener(this);
-        stopButton.setOnClickListener(this);
-
-        images = new ArrayList<>();
-        handler = new Handler();
+        changeWallpaperButton.setOnCheckedChangeListener(this);
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.addImage:
-                selectImage();
-                break;
-            case R.id.changeButton:
-                if (images.size() != 0) {
-                    String time = timeIntervalText.getText().toString();
-                    int timeDelayInSeconds;
-
-                    if (time.isEmpty())
-                        makeToast("Please enter the time interval...");
-                    else {
-                        timeDelayInSeconds = Integer.parseInt(time);
-                        scheduleWallpaperChange(timeDelayInSeconds);
-                    }
-                } else makeToast("Select at least one image for wallpaper");
-                break;
-            case R.id.stopButton:
-                makeToast("Stopped");
-                handler.removeCallbacks(runnable);
-                break;
-        }
+        selectImage();
     }
 
     public void selectImage() {
@@ -93,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
             Uri imageUri = data.getData();
-            images.add(imageUri);
+            addedImages.add(imageUri);
 
             File file = new File(imageUri.getPath());
             String text = file.getName() + "\n";
@@ -107,25 +95,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void run() {
                 Random random = new Random();
-                int bound = images.size();
+                int bound = addImageButton.isEnabled() ? addedImages.size() : appWallpapers.length;
                 int randomInt = random.nextInt(bound);
-                makeToast("Selected wallpaper no: " + randomInt);
                 changeWallpaperFun(randomInt);
                 handler.postDelayed(this, 1000 * timeDelay);
             }
         };
         handler.post(runnable);
-        //handler.removeCallbacks(runnable);
     }
 
     private void changeWallpaperFun(int imageIndex) {
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
 
         try {
-            Uri uri = images.get(imageIndex);
-            Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-            imageView.setImageBitmap(bitmap);
+            Bitmap bitmap;
+            if (addImageButton.isEnabled()) // addImageButton is used to indicate type of option selected from the drop down
+            {
+                Uri uri = addedImages.get(imageIndex);
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+            } else bitmap = BitmapFactory.decodeResource(getResources(), appWallpapers[imageIndex]);
             wallpaperManager.setBitmap(bitmap);
+            selectedWallpaperText.setVisibility(View.VISIBLE);
+            selectedWallpaperText.setText("Randomly selected wallpaper no : " + (imageIndex + 1));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -135,5 +126,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void makeToast(String toastMessage) {
         Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        selectedImagesTextBox.setText("");
+        if (i == 0) { // if App is selected
+            addImageButton.setEnabled(false);
+            for (int id : appWallpapers)
+                selectedImagesTextBox.append(getString(id).split("/")[2] + "\n");
+        } else {
+            addImageButton.setEnabled(true);
+            selectedImagesTextBox.setText("");
+            addedImages.clear();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton button, boolean isChecked) {
+        if (isChecked) {
+            if (addImageButton.isEnabled()) {
+                if (addedImages.size() == 0) {
+                    makeToast("Select at least one image for wallpaper");
+                    button.setChecked(false); // to avoid change of button state
+                    return;
+                }
+            }
+            String time = timeIntervalText.getText().toString();
+
+            if (time.isEmpty()) {
+                makeToast("Please enter the time interval...");
+                button.setChecked(false); // to avoid change of button state
+                return;
+            }
+
+            scheduleWallpaperChange(Integer.parseInt(time));
+        } else {
+            makeToast("Stopped");
+            handler.removeCallbacks(runnable);
+        }
     }
 }
