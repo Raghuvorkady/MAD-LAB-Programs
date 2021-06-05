@@ -3,7 +3,7 @@
 | Sl.No | Part-A Lab Programs | Project Link | Downloads |
 |:-----:|---------------------|:------------:|:---------:|
 | 1. | Visiting Card | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p1-VisitingCard/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p1-v1.0.0/Visiting_Card_v1.0.0.apk) | 
-| 2. | Simple Calculator | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p2-SimpleCalculator/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p2-v1.0.0/Simple_Calculator_v1.0.0.apk) |
+| 2. | Simple Calculator | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p2-SimpleCalculator/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p2-v1.1.0/SimpleCalculator_v1.1.0.apk) |
 | 3. | Login Activity | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p3-LoginActivity/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p3-v1.0.0/Login_Activity_v1.0.0.apk) |
 | 4. | Wallpaper App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p4-WallpaperApp/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p4-v1.0.0/Wallpaper_App_v1.0.0.apk) |
 | 5. | Counter App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p5-CounterApp/) | - |
