@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CallAndSaveApp</string>
     <string name="title">CALL AND SAVE APPLICATION</string>
+    <string name="erase_to_left">⌫</string>
 </resources>

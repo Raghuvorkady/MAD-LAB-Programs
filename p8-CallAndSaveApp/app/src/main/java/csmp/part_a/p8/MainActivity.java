@@ -1,11 +1,7 @@
 package csmp.part_a.p8;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,23 +9,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
 
     private static final int REQUEST_CODE_ASK_PERMISSIONS = 1;
-    Button zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn, dotBtn, hashBtn, callBtn, saveBtn;
-    ImageButton backspaceBtn;
     private TextView expressionTextView;
 
-    Vibrator vibrator;
-
-    String inputPhoneString;
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,23 +33,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         expressionTextView = findViewById(R.id.expression);
 
-        zeroBtn = findViewById(R.id.zero);
-        oneBtn = findViewById(R.id.one);
-        twoBtn = findViewById(R.id.two);
-        threeBtn = findViewById(R.id.three);
-        fourBtn = findViewById(R.id.four);
-        fiveBtn = findViewById(R.id.five);
-        sixBtn = findViewById(R.id.six);
-        sevenBtn = findViewById(R.id.seven);
-        eightBtn = findViewById(R.id.eight);
-        nineBtn = findViewById(R.id.nine);
+        Button zeroBtn = findViewById(R.id.zero);
+        Button oneBtn = findViewById(R.id.one);
+        Button twoBtn = findViewById(R.id.two);
+        Button threeBtn = findViewById(R.id.three);
+        Button fourBtn = findViewById(R.id.four);
+        Button fiveBtn = findViewById(R.id.five);
+        Button sixBtn = findViewById(R.id.six);
+        Button sevenBtn = findViewById(R.id.seven);
+        Button eightBtn = findViewById(R.id.eight);
+        Button nineBtn = findViewById(R.id.nine);
 
-        dotBtn = findViewById(R.id.dot);
-        hashBtn = findViewById(R.id.hash);
-        backspaceBtn = findViewById(R.id.backspace);
+        Button dotBtn = findViewById(R.id.asterisk);
+        Button hashBtn = findViewById(R.id.hash);
+        TextView backspaceBtn = findViewById(R.id.backspace);
 
-        callBtn = findViewById(R.id.call);
-        saveBtn = findViewById(R.id.save);
+        Button callBtn = findViewById(R.id.call);
+        Button saveBtn = findViewById(R.id.save);
 
         zeroBtn.setOnClickListener(this);
         oneBtn.setOnClickListener(this);
@@ -79,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestPermission();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         vibrator.vibrate(10); //used to get haptic feedback for every button click
@@ -93,41 +89,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 saveMethod(inputPhoneNo);
                 break;
             case R.id.zero:
-                generateExpression("0");
+                expressionTextView.append("0");
                 break;
             case R.id.one:
-                generateExpression("1");
+                expressionTextView.append("1");
                 break;
             case R.id.two:
-                generateExpression("2");
+                expressionTextView.append("2");
                 break;
             case R.id.three:
-                generateExpression("3");
+                expressionTextView.append("3");
                 break;
             case R.id.four:
-                generateExpression("4");
+                expressionTextView.append("4");
                 break;
             case R.id.five:
-                generateExpression("5");
+                expressionTextView.append("5");
                 break;
             case R.id.six:
-                generateExpression("6");
+                expressionTextView.append("6");
                 break;
             case R.id.seven:
-                generateExpression("7");
+                expressionTextView.append("7");
                 break;
             case R.id.eight:
-                generateExpression("8");
+                expressionTextView.append("8");
                 break;
             case R.id.nine:
-                generateExpression("9");
+                expressionTextView.append("9");
                 break;
-            case R.id.dot:
-//                String dotExpression = "[0-9]+\\.[0-9]+";
-//                generateExpression(".");
+            case R.id.asterisk:
+                expressionTextView.append("*");
                 break;
             case R.id.hash:
-//                generateExpression("-");
+                expressionTextView.append("#");
                 break;
             case R.id.backspace:
                 int inputLength = inputPhoneNo.length();
@@ -144,19 +139,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
-    private void callMethod(String inputPhoneNo) {
+    private void callMethod(String number) {
         Intent intent = new Intent(Intent.ACTION_CALL);
-        Uri number = Uri.parse("tel:" + inputPhoneNo);
-        intent.setData(number);
+        if (number.contains("#")) // need to replace # with it's encoded value if using USSD codes
+            number = number.replaceAll("#", Uri.encode("#"));
+        Uri uri = Uri.parse("tel:" + number);
+        intent.setData(uri);
         startActivity(intent);
-    }
-
-    public void generateExpression(String val) {
-        inputPhoneString = expressionTextView.getText().toString();
-        String phoneExpression = "[0-9]{0,9}";
-
-        if (inputPhoneString.matches(phoneExpression))
-            expressionTextView.setText(String.format("%s%s", inputPhoneString, val));
     }
 
     private void requestPermission() {
