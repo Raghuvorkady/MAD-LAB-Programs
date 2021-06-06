@@ -26,4 +26,45 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
     </style>
 
+
+    <style name="buttonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_columnWeight" tools:targetApi="lollipop">1</item>
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:background">?attr/bgColor</item>
+        <item name="textColor">?attr/textColor</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="numberButtonStyle" parent="buttonStyle">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="operatorButtonStyle" parent="buttonStyle">
+        <item name="android:textSize">35sp</item>
+    </style>
+
+    <style name="equalButtonStyle" parent="buttonStyle">
+        <item name="android:background">@color/app_orange</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+
+    <style name="textStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/app_orange</item>
+    </style>
+
+    <style name="outputTextStyle" parent="textStyle">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">50sp</item>
+    </style>
+
+    <style name="inputTextStyle" parent="textStyle">
+        <item name="android:textSize">30sp</item>
+    </style>
+
 </resources>

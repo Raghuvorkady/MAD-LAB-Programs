@@ -6,23 +6,10 @@
 
     <TextView
         android:id="@+id/outputView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans_bold"
-        android:gravity="center_vertical|end"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColor="@color/app_orange"
-        android:textSize="50sp" />
+        style="@style/outputTextStyle" />
 
     <TextView
         android:id="@+id/expression"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical|end"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColor="@color/app_orange"
-        android:textSize="30sp" />
+        style="@style/inputTextStyle" />
 
 </LinearLayout>

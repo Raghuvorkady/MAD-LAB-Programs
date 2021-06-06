@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/bgColor"
@@ -9,304 +8,102 @@
 
     <Button
         android:id="@+id/clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity=""
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/clearTxt"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/clearTxt" />
 
     <Button
-
         android:id="@+id/backspace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/backspace"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/operatorButtonStyle"
+        android:text="@string/backspace" />
 
     <Button
         android:id="@+id/percentage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/percentageSymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/operatorButtonStyle"
+        android:text="@string/percentageSymbol" />
 
     <Button
         android:id="@+id/divide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/divideSymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="35sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/operatorButtonStyle"
+        android:text="@string/divideSymbol" />
 
     <Button
         android:id="@+id/seven"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/sevenNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/sevenNum" />
 
     <Button
         android:id="@+id/eight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/eightNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/eightNum" />
 
     <Button
         android:id="@+id/nine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/nineNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/nineNum" />
 
     <Button
         android:id="@+id/multiply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/multiplySymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="35sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/operatorButtonStyle"
+        android:text="@string/multiplySymbol" />
 
     <Button
         android:id="@+id/four"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/fourNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/fourNum" />
 
     <Button
         android:id="@+id/five"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/fiveNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/fiveNum" />
 
     <Button
         android:id="@+id/six"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/sixNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/sixNum" />
 
     <Button
         android:id="@+id/minus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/minusSymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="35sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/operatorButtonStyle"
+        android:text="@string/minusSymbol" />
 
     <Button
         android:id="@+id/one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/oneNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/oneNum" />
 
     <Button
         android:id="@+id/two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/twoNum"
-        android:textColor="?attr/textColor"
-        android:textSize="26sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/twoNum" />
 
     <Button
         android:id="@+id/three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/threeNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/threeNum" />
 
     <Button
         android:id="@+id/plus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/plusSymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="35sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/operatorButtonStyle"
+        android:text="@string/plusSymbol" />
 
     <Button
         android:id="@+id/doubleZero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/doubleZeroNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/doubleZeroNum" />
 
     <Button
         android:id="@+id/dot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/dotSymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/operatorButtonStyle"
+        android:text="@string/dotSymbol" />
 
     <Button
         android:id="@+id/zero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="?attr/bgColor"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/zeroNum"
-        android:textColor="?attr/textColor"
-        android:textSize="30sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/numberButtonStyle"
+        android:text="@string/zeroNum" />
 
     <Button
         android:id="@+id/equals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:background="@color/app_orange"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:text="@string/equalsSymbol"
-        android:textColor="?attr/textColor"
-        android:textSize="35sp"
-        tools:ignore="UnusedAttribute"
-        tools:targetApi="lollipop" />
+        style="@style/equalButtonStyle"
+        android:text="@string/equalsSymbol" />
 
 </GridLayout>
