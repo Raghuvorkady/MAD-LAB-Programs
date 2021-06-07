@@ -8,7 +8,7 @@ android {
         applicationId "csmp.part_a.p2"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 1
+        versionCode 2
         versionName "1.2.1"
         // Required when setting minSdkVersion to 20 or lower
         multiDexEnabled true
