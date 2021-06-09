@@ -8,7 +8,7 @@
 | 4. | Wallpaper App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p4-WallpaperApp/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p4-v1.0.0/Wallpaper_App_v1.0.0.apk) |
 | 5. | Counter App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p5-CounterApp/) | - |
 | 6. | XML and Json Parser App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p6-ParsingXmlAndJson/) | - |
-| 7. | Text to Speech App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p7-TextToSpeechApp/) | - |
+| 7. | Text to Speech App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p7-TextToSpeechApp/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p7-v1.0.1/TextToSpeech_App_v1.0.1.apk) |
 | 8. | Caller App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p8-CallAndSaveApp/) | - |
 
 ## References:
