@@ -2,5 +2,5 @@
     <string name="app_name">TextToSpeechApp</string>
     <string name="txtToSpch">TEXT TO SPEECH APPLICATION</string>
     <string name="convert_text_to_speech">Convert Text To Speech</string>
-    <string name="write_something_to_listen">Write something to listen...</string>
+    <string name="write_something_to_listen">Write something to listen…</string>
 </resources>
