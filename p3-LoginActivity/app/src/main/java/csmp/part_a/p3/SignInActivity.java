@@ -4,14 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final int MAX_ATTEMPTS = 2;
-    int attempts;
+    private int attempts = 0;
 
     private String username;
     private String password;
@@ -22,13 +24,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_in);
 
-        signInUsernameField = findViewById(R.id.signInUsernameEditText);
-        signInPasswordField = findViewById(R.id.signInPasswordEditText);
-        signInButton = findViewById(R.id.signInButton);
+        TextView heading = findViewById(R.id.heading);
+        signInUsernameField = findViewById(R.id.usernameEditText);
+        signInPasswordField = findViewById(R.id.passwordEditText);
+        signInButton = findViewById(R.id.button);
 
-        attempts = 0;
+        LinearLayout passwordRulesView = findViewById(R.id.password_rules_view);
+
+        heading.setText(getString(R.string.signin_activity));
+        signInButton.setText(getString(R.string.sign_in));
+        passwordRulesView.setVisibility(View.GONE);
 
         getValueFromUserBundle();
 
@@ -60,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void makeToast(String toastMessage) {
+    private void makeToast(String toastMessage) {
         Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show();
     }
 }

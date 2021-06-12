@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     EditText signUpUsernameField, signUpPasswordField;
     Button signUpButton;
@@ -23,13 +23,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_up);
 
-        signUpUsernameField = findViewById(R.id.signUpUsernameEditText);
-        signUpPasswordField = findViewById(R.id.signUpPasswordEditText);
-        signUpButton = findViewById(R.id.signUpButton);
+        TextView heading = findViewById(R.id.heading);
+        signUpUsernameField = findViewById(R.id.usernameEditText);
+        signUpPasswordField = findViewById(R.id.passwordEditText);
+        signUpButton = findViewById(R.id.button);
         pwdRuleSwitch = findViewById(R.id.pwdRuleSwitch);
         pwdRuleTextView = findViewById(R.id.pwdRuleTextView);
+
+        heading.setText(getString(R.string.signup_activity));
+        signUpButton.setText(getString(R.string.sign_up));
 
         pwdRuleSwitch.setOnCheckedChangeListener(this);
         signUpButton.setOnClickListener(this);
@@ -58,14 +62,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Bundle userBundle = new Bundle();
             userBundle.putString(Constants.USERNAME_KEY, username);
             userBundle.putString(Constants.PASSWORD_KEY, password);
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, SignInActivity.class);
             intent.putExtras(userBundle);
             startActivity(intent);
         }
-    }
-
-    public void makeToast(String toastMessage) {
-        Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -73,5 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isChecked)
             pwdRuleTextView.setVisibility(View.VISIBLE);
         else pwdRuleTextView.setVisibility(View.GONE);
+    }
+
+    private void makeToast(String toastMessage) {
+        Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show();
     }
 }
