@@ -58,7 +58,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             makeToast("Successful Login!");
         else {
             if (attempts < MAX_ATTEMPTS)
-                makeToast("Login attempts remaining: " + (MAX_ATTEMPTS - attempts));
+                makeToast("Incorrect login credentials\nLogin attempts remaining: " + (MAX_ATTEMPTS - attempts));
             else {
                 makeToast("Failed Login Attempts");
                 signInButton.setEnabled(false);
