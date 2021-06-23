@@ -1,13 +1,13 @@
 package csmp.part_a.p5;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,10 +28,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         stopButton = (Button) findViewById(R.id.stopButton);
         counterValueText = (TextView) findViewById(R.id.counterValueTextView);
 
-        counter = 0;
-        handler = new Handler();
         startButton.setOnClickListener(this);
         stopButton.setOnClickListener(this);
+
+        counter = 0;
+        handler = new Handler();
     }
 
     public void handleCounter() {
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handler.post(runnable);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -61,9 +63,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
-    private void makeToast(String toastMessage) {
-        Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
-    }
-
 }
