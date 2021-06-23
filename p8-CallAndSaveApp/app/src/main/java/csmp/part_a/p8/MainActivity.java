@@ -21,7 +21,7 @@ import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
 
-    private static final int REQUEST_CODE_ASK_PERMISSIONS = 1;
+    private static final int REQUEST_CODE = 1;
     private TextView expressionTextView;
 
     private Vibrator vibrator;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         saveBtn.setOnClickListener(this);
 
         vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-        requestPermission();
+        requestPermissionFromUser();
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -132,6 +132,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void requestPermissionFromUser() {
+        String permission = Manifest.permission.CALL_PHONE;
+        String[] permissions = new String[]{permission};
+        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, permissions, REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                makeToast("Permission Granted");
+            else
+                makeToast("Permission Denied");
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
     private void saveMethod(String inputPhoneNo) {
         Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
         intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
@@ -146,28 +167,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Uri uri = Uri.parse("tel:" + number);
         intent.setData(uri);
         startActivity(intent);
-    }
-
-    private void requestPermission() {
-        String permissionString = Manifest.permission.CALL_PHONE;
-        String[] permissionStringArray = new String[]{permissionString};
-        if (ContextCompat.checkSelfPermission(this, permissionString) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this, permissionStringArray, REQUEST_CODE_ASK_PERMISSIONS);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE_ASK_PERMISSIONS) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {// Permission Granted
-                makeToast("Permission Granted");
-            } else { // Permission Denied
-                makeToast("Permission Denied");
-            }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
     }
 
     private void makeToast(String toastMessage) {
