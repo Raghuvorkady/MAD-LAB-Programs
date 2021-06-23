@@ -14,4 +14,6 @@
     <string name="six">6</string>
     <string name="five">5</string>
     <string name="four">4</string>
+    <string name="save">save</string>
+    <string name="call">call</string>
 </resources>
