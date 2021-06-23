@@ -34,7 +34,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
-            android:id="@+id/counterValueTextView"
+            android:id="@+id/counterTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -42,19 +42,15 @@
             android:text="@string/zero"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <Button
-            android:id="@+id/startButton"
+        <ToggleButton
+            android:id="@+id/toggleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/start" />
+            android:textOff="@string/start"
+            android:textOn="@string/stop" />
 
-        <Button
-            android:id="@+id/stopButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/stop" />
     </LinearLayout>
 
 </RelativeLayout>
