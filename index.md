@@ -17,4 +17,4 @@
 2. To enroll in Android Developer Fundamentals Course, click [here](https://developer.android.com/courses/fundamentals-training/overview-v2).
 3. For Android documentation, click [here](https://developer.android.com/guide).
 4. For checking out different [releases](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases) of the projects.
-5. Click [here](Lab-Manual/18CSMP68_Lab_Manual.pdf) for the Lab manual.
+5. Click [here](https://github.com/Raghuvorkady/MAD-LAB-Programs/blob/main/Lab-Manual/18CSMP68_Lab_Manual.pdf) for the Lab manual.
