@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Parse XML Data"
+                android:text="@string/parse_xml_data"
                 android:textAllCaps="false" />
 
             <Button
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Parse JSON Data"
+                android:text="@string/parse_json_data"
                 android:textAllCaps="false" />
         </LinearLayout>
 
