@@ -7,7 +7,7 @@
 | 3. | Login Activity | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p3-LoginActivity/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p3-v1.1.1/Login_Activity_v1.1.1.apk) |
 | 4. | Wallpaper App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p4-WallpaperApp/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p4-v1.0.0/Wallpaper_App_v1.0.0.apk) |
 | 5. | Counter App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p5-CounterApp/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p5-v1.1.0/Counter_App_v1.1.0.apk) |
-| 6. | XML and Json Parser App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p6-ParsingXmlAndJson/) | - |
+| 6. | XML and Json Parser App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p6-ParsingXmlAndJson/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p6-v1.1.0/ParsingXmlAndJson_App_v1.1.0.apk) |
 | 7. | Text to Speech App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p7-TextToSpeechApp/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p7-v1.0.1/TextToSpeech_App_v1.0.1.apk) |
 | 8. | Call and Save App | [Code](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main/p8-CallAndSaveApp/) | [APK](https://github.com/Raghuvorkady/MAD-LAB-Programs/releases/download/p8-v1.1.2/Call_And_Save_App_v1.1.2.apk) |
 
