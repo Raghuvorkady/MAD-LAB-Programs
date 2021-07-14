@@ -1,8 +1,22 @@
 package csmp.part_a.p6.classes;
 
 public class City {
-    private String cityName, humidity;
-    private double latitude, longitude, temperature;
+    private String cityName;
+    private String humidity;
+    private double latitude;
+    private double longitude;
+    private double temperature;
+
+    public City() {
+    }
+
+    public City(String cityName, String humidity, double latitude, double longitude, double temperature) {
+        this.cityName = cityName;
+        this.humidity = humidity;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.temperature = temperature;
+    }
 
     public void setCityName(String cityName) {
         this.cityName = cityName;

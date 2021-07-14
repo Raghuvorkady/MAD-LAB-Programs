@@ -1,10 +1,11 @@
 package csmp.part_a.p6.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,16 +21,17 @@ import csmp.part_a.p6.classes.City;
 
 public class ParsedJson extends AppCompatActivity {
 
-    ListView jsonListView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parsed_json);
+        setContentView(R.layout.activity_parsed_json_xml);
 
-        jsonListView = (ListView) findViewById(R.id.jsonListView);
+        ListView jsonListView = findViewById(R.id.list_view);
+        TextView textView = findViewById(R.id.textView);
 
-        List<City> cityList = new ArrayList<City>();
+        textView.setText("PARSED JSON DATA");
+
+        List<City> cities = new ArrayList<>();
 
         try {
             // get JSONObject from JSON file
@@ -45,10 +47,10 @@ public class ParsedJson extends AppCompatActivity {
                 city.setLongitude(cityObject.getDouble("Longitude"));
                 city.setTemperature(cityObject.getDouble("Temperature"));
                 city.setHumidity(cityObject.getString("Humidity"));
-                cityList.add(city);
+                cities.add(city);
             }
 
-            ArrayAdapter<City> arrayAdapter = new ArrayAdapter<City>(this, android.R.layout.simple_list_item_1, cityList);
+            ArrayAdapter<City> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cities);
             jsonListView.setAdapter(arrayAdapter);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -58,9 +60,8 @@ public class ParsedJson extends AppCompatActivity {
     public String loadJSONFromAsset() {
         String jsonString;
         try {
-            InputStream inputStream = getAssets().open("city.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
+            InputStream inputStream =  getAssets().open("city.json");
+            byte[] buffer = new byte[inputStream.available()];
             inputStream.read(buffer);
             inputStream.close();
             jsonString = new String(buffer, "UTF-8");

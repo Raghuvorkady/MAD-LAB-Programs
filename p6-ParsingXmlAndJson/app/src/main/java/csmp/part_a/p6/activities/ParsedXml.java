@@ -1,40 +1,81 @@
 package csmp.part_a.p6.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import csmp.part_a.p6.R;
 import csmp.part_a.p6.classes.City;
-import csmp.part_a.p6.helper.XmlPullParserHandler;
 
 public class ParsedXml extends AppCompatActivity {
 
-    ListView xmlListView;
+    private Element element;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parsed_xml);
+        setContentView(R.layout.activity_parsed_json_xml);
 
-        xmlListView = (ListView) findViewById(R.id.xmlListView);
+        ListView xmlListView = findViewById(R.id.list_view);
+        TextView textView = findViewById(R.id.textView);
 
-        List<City> cityList = null;
+        textView.setText("PARSED XML DATA");
+
+        List<City> cities = new ArrayList<>();
+
         try {
-            XmlPullParserHandler xmlPullParserHandler = new XmlPullParserHandler(); //a custom class to parse XML
             InputStream inputStream = getAssets().open("city.xml");
-            cityList = xmlPullParserHandler.parseXMLData(inputStream);
 
-            ArrayAdapter<City> arrayAdapter = new ArrayAdapter<City>(this, android.R.layout.simple_list_item_1, cityList);
+            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(inputStream);
+            NodeList nodeList = document.getElementsByTagName("city");
+
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    element = (Element) node;
+                    City city = new City();
+                    city.setCityName(getValue("City_name"));
+                    city.setLatitude(Double.parseDouble(getValue("Latitude")));
+                    city.setLongitude(Double.parseDouble(getValue("Longitude")));
+                    city.setTemperature(Double.parseDouble(getValue("Temperature")));
+                    city.setHumidity(getValue("Humidity"));
+                    cities.add(city);
+                }
+            }
+            inputStream.close();
+
+            ArrayAdapter<City> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cities);
             xmlListView.setAdapter(arrayAdapter);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
         }
+    }
+
+    private String getValue(String tag) {
+        return element.getElementsByTagName(tag).item(0).getChildNodes().item(0).getNodeValue();
     }
 }

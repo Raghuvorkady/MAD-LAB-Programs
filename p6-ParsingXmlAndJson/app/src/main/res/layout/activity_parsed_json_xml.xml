@@ -13,13 +13,12 @@
         android:background="@color/grey"
         android:gravity="center"
         android:padding="10dp"
-        android:text="@string/xmlParsed"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <ListView
-        android:id="@+id/xmlListView"
-        android:padding="50dp"
-        android:layout_below="@id/textView"
+        android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/textView"
+        android:padding="50dp" />
 </RelativeLayout>
