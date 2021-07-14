@@ -18,3 +18,4 @@
 2. Click [here](https://youtu.be/0zx_eFyHRU0?t=371) to watch installation video.
 2. To enroll in Android Developer Fundamentals Course, click [here](https://developer.android.com/courses/fundamentals-training/overview-v2).
 3. For Android documentation, click [here](https://developer.android.com/guide).
+4. Click [here](Lab-Manual/18CSMP68_Lab_Manual.pdf) for the Lab manual.
