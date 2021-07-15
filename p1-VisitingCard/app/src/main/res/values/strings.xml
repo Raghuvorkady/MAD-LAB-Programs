@@ -1,17 +1,3 @@
 <resources>
     <string name="app_name">VisitingCard</string>
-    <string name="address">Address</string>
-    <string name="phone_number">Phone number</string>
-    <string name="job_title">Job Title</string>
-    <string name="name">Name</string>
-    <string name="email">Email</string>
-    <string name="website">Website</string>
-    <string name="fax">FAX</string>
-    <string name="create_visiting_card">Create Visiting Card</string>
-    <string name="company_name">Company Name</string>
-    <string name="company_logo_image">Company logo image</string>
-    <string name="card">visitingCard</string>
-    <string name="enter_all_the_details_to_ncreate_your_visiting_card">Enter all the details to\ncreate your visiting card</string>
-    <string name="select_logo_image">Select logo Image</string>
-    <string name="selected_image">Selected Image:</string>
 </resources>

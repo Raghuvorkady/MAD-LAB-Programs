@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +19,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activities.GeneratedCard"
-            android:parentActivityName=".activities.MainActivity"
-            tools:targetApi="jelly_bean" />
     </application>
 
 </manifest>
