@@ -13,6 +13,11 @@
 
 ---
 
+### Note⚠:
+* The [main](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/main) branch is maintained for only VTU external lab examination.
+* The [update](https://github.com/Raghuvorkady/MAD-LAB-Programs/tree/update) branch is maintained for adding/updating extra features.
+---
+
 ## References:
 1. To download latest Android Studio, click [here](https://developer.android.com/studio).
 2. Click [here](https://youtu.be/0zx_eFyHRU0?t=371) to watch installation video.
