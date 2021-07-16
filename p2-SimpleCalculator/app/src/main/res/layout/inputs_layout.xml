@@ -5,11 +5,13 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/outputView"
-        style="@style/outputTextStyle" />
+        android:id="@+id/output_view"
+        style="@style/TextStyle"
+        android:textSize="50sp" />
 
     <TextView
         android:id="@+id/expression"
-        style="@style/inputTextStyle" />
+        style="@style/TextStyle"
+        android:textSize="30sp" />
 
 </LinearLayout>
