@@ -5,7 +5,6 @@
     <string name="add_images">Add images</string>
     <string name="selected_images">Selected images:</string>
     <string name="no_image_selected">No image selected</string>
-    <string name="enter_time_interval_nfor_changing_nwallpaper_in_seconds">enter Time Interval\nfor changing Wallpaper:</string>
     <string name="stop">Stop</string>
     <string name="select_wallpapers_from">Select wallpapers from</string>
 </resources>
