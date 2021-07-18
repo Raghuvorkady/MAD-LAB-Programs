@@ -21,20 +21,22 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ToggleButton toggleButton = findViewById(R.id.toggleButton);
-        counterText = findViewById(R.id.counterTextView);
-
-        toggleButton.setOnCheckedChangeListener(this);
+        ToggleButton toggleButton = findViewById(R.id.toggle_button);
+        counterText = findViewById(R.id.counter_text_view);
 
         counter = 0;
         handler = new Handler();
+
+        toggleButton.setOnCheckedChangeListener(this);
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        if (isChecked)
+        if (isChecked) {
             handleCounter();
-        else handler.removeCallbacks(runnable);
+        } else {
+            handler.removeCallbacks(runnable);
+        }
     }
 
     private void handleCounter() {
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             public void run() {
                 counter++;
                 counterText.setText(String.valueOf(counter));
+
                 handler.postDelayed(this, 100);
             }
         };
