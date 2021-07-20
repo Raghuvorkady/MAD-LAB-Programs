@@ -25,7 +25,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -35,7 +35,7 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/convertButton"
+            android:id="@+id/convert_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
