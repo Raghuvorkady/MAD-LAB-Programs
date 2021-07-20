@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button parseJsonButton = (Button) findViewById(R.id.parseJsonButton);
-        Button parseXmlButton = (Button) findViewById(R.id.parseXmlButton);
+        Button parseJsonButton = findViewById(R.id.parse_json_button);
+        Button parseXmlButton = findViewById(R.id.parse_xml_button);
 
         parseJsonButton.setOnClickListener(this);
         parseXmlButton.setOnClickListener(this);
@@ -28,12 +28,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.parseXmlButton:
-                Intent xmlIntent = new Intent(this, ParsedXml.class);
+            case R.id.parse_xml_button:
+                Intent xmlIntent = new Intent(this, ParseActivity.class);
+                xmlIntent.putExtra("isXml", true);
                 startActivity(xmlIntent);
                 break;
-            case R.id.parseJsonButton:
-                Intent jsonIntent = new Intent(MainActivity.this, ParsedJson.class);
+            case R.id.parse_json_button:
+                Intent jsonIntent = new Intent(this, ParseActivity.class);
                 startActivity(jsonIntent);
                 break;
         }

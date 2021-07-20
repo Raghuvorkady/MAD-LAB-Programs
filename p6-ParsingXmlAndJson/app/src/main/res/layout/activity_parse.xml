@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ParsedXml" >
+    tools:context=".activities.ParseActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -15,10 +15,30 @@
         android:padding="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <ListView
-        android:id="@+id/list_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/textView"
-        android:padding="50dp" />
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/parsed_xml_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal"
+            android:text="XML" />
+
+        <TextView
+            android:id="@+id/parsed_json_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal"
+            android:text="JSON" />
+
+    </LinearLayout>
+
+
 </RelativeLayout>
