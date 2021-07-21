@@ -119,9 +119,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void callMethod(String number) {
-        // if Intent.ACTION_CALL is used,
-        // then manually allow the telephone permission for the app
-        Intent intent = new Intent(Intent.ACTION_CALL);
+        // if Intent.ACTION_CALL is used instead of Intent.ACTION_DIAL,
+        // then manually allow the telephone permission in the App Settings
+        Intent intent = new Intent(Intent.ACTION_DIAL);
         Uri uri = Uri.parse("tel:" + number);
         intent.setData(uri);
         startActivity(intent);
