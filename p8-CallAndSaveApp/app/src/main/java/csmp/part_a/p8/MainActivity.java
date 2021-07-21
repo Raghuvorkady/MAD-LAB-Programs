@@ -1,37 +1,26 @@
 package csmp.part_a.p8;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
 
-    private static final int REQUEST_CODE = 1;
-    private TextView expressionTextView;
-
-    private Vibrator vibrator;
+    private TextView inputTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        expressionTextView = findViewById(R.id.expression);
+        inputTextView = findViewById(R.id.expression);
 
         Button zeroBtn = findViewById(R.id.zero);
         Button oneBtn = findViewById(R.id.one);
@@ -69,17 +58,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         callBtn.setOnClickListener(this);
         saveBtn.setOnClickListener(this);
-
-        vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
-        requestPermissionFromUser();
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        vibrator.vibrate(10); //used to get haptic feedback for every button click
         int id = view.getId();
-        String inputPhoneNo = expressionTextView.getText().toString();
+        String inputPhoneNo = inputTextView.getText().toString();
 
         switch (id) {
             case R.id.call:
@@ -89,68 +74,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 saveMethod(inputPhoneNo);
                 break;
             case R.id.zero:
-                expressionTextView.append("0");
+                inputTextView.append("0");
                 break;
             case R.id.one:
-                expressionTextView.append("1");
+                inputTextView.append("1");
                 break;
             case R.id.two:
-                expressionTextView.append("2");
+                inputTextView.append("2");
                 break;
             case R.id.three:
-                expressionTextView.append("3");
+                inputTextView.append("3");
                 break;
             case R.id.four:
-                expressionTextView.append("4");
+                inputTextView.append("4");
                 break;
             case R.id.five:
-                expressionTextView.append("5");
+                inputTextView.append("5");
                 break;
             case R.id.six:
-                expressionTextView.append("6");
+                inputTextView.append("6");
                 break;
             case R.id.seven:
-                expressionTextView.append("7");
+                inputTextView.append("7");
                 break;
             case R.id.eight:
-                expressionTextView.append("8");
+                inputTextView.append("8");
                 break;
             case R.id.nine:
-                expressionTextView.append("9");
+                inputTextView.append("9");
                 break;
             case R.id.asterisk:
-                expressionTextView.append("*");
+                inputTextView.append("*");
                 break;
             case R.id.hash:
-                expressionTextView.append("#");
+                inputTextView.append("#");
                 break;
             case R.id.backspace:
                 int inputLength = inputPhoneNo.length();
-                if (inputLength > 0)
-                    expressionTextView.setText(inputPhoneNo.substring(0, inputLength - 1));
+                if (inputLength > 0) {
+                    inputTextView.setText(inputPhoneNo.substring(0, inputLength - 1));
+                }
                 break;
         }
     }
 
-    private void requestPermissionFromUser() {
-        String permission = Manifest.permission.CALL_PHONE;
-        String[] permissions = new String[]{permission};
-        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, permissions, REQUEST_CODE);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                makeToast("Permission Granted");
-            else
-                makeToast("Permission Denied");
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
+    private void callMethod(String number) {
+        // if Intent.ACTION_CALL is used,
+        // then manually allow the telephone permission for the app
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        Uri uri = Uri.parse("tel:" + number);
+        intent.setData(uri);
+        startActivity(intent);
     }
 
     private void saveMethod(String inputPhoneNo) {
@@ -160,22 +134,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
-    private void callMethod(String number) {
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        if (number.contains("#")) // need to replace # with it's encoded value if using USSD codes
-            number = number.replaceAll("#", Uri.encode("#"));
-        Uri uri = Uri.parse("tel:" + number);
-        intent.setData(uri);
-        startActivity(intent);
-    }
-
-    private void makeToast(String toastMessage) {
-        Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     public boolean onLongClick(View view) {
-        expressionTextView.setText("");
+        inputTextView.setText("");
         return true;
     }
 }

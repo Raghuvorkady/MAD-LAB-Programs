@@ -7,62 +7,62 @@
 
     <Button
         android:id="@+id/one"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/one" />
 
     <Button
         android:id="@+id/two"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/two" />
 
     <Button
         android:id="@+id/three"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/three" />
 
     <Button
         android:id="@+id/four"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/four" />
 
     <Button
         android:id="@+id/five"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/five" />
 
     <Button
         android:id="@+id/six"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/six" />
 
     <Button
         android:id="@+id/seven"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/seven" />
 
     <Button
         android:id="@+id/eight"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/eight" />
 
     <Button
         android:id="@+id/nine"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/nine" />
 
     <Button
         android:id="@+id/asterisk"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/asterisk" />
 
     <Button
         android:id="@+id/zero"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/zero" />
 
     <Button
         android:id="@+id/hash"
-        style="@style/button"
+        style="@style/Button"
         android:text="@string/hash" />
 
 </GridLayout>
