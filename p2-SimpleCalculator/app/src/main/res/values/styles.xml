@@ -11,7 +11,7 @@
         <item name="android:layout_columnWeight" tools:targetApi="lollipop">1</item>
         <item name="android:layout_gravity">fill</item>
         <item name="android:background">@color/white</item>
-        <item name="textColor">@color/grey</item>
+        <item name="android:textColor">@color/grey</item>
         <item name="android:padding">16dp</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
